@@ -1,0 +1,367 @@
+/* HomestayCss Start */
+/* @media screen and (max-width: 1041px) {
+  .HomestayPage1screen {
+      margin-top: 50px;
+      margin-bottom: 50px;
+      margin-left: -220px;
+  }
+} */
+/* --------------------------------------- Untuk Home ----------------------------------- */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height:100vh !important;
+}
+
+.HomestayPage1{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 275px;
+    display: flex;
+}
+
+/* @media screen and (max-width: 1041px) {
+  .HomestayPage2screen {
+    max-width: 240px;
+    min-height: 330px;
+    border: groove 2px;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+  }
+} */
+
+.HomestayPage2{
+  width: 800px;
+  height: 110px;
+  border: groove 2px;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+  border-bottom-left-radius: 35px;
+}
+
+/* @media screen and (max-width: 1041px) {
+  .HomestayPage3screen {
+    margin-top: 10px;
+  }
+} */
+
+.HomestayPage3{
+  display: flex;
+  margin-top: 00%;
+}
+
+/* @media screen and (max-width: 1041px) {
+  .HomestayPage4screen {
+    border-color: white;
+    margin-top: 15px;
+  }
+} */
+
+.HomestayPage4{
+  mask-border-width: 100px;
+  border-right: 1px solid;
+  border-color: #25b448;
+  margin-top: 15px;
+}
+
+.Homestay1Page4{
+  list-style: none;
+  color: #25b448;
+  margin-right: 100px
+}
+/* HomestayCss End*/
+
+form.example input[type=text] {
+
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.mySlides {
+  display: none;
+}
+
+.mySlides2 {
+  display: none;
+}
+
+/* ----------------------------- Home Start ----------------------------- */
+
+img {vertical-align: middle;}
+
+.homeImage{
+  width: 100%;
+  border-radius: 30px;
+  border: 2px solid #202020;
+  box-shadow: 2px 8px 10px black;
+}
+
+/* --------------------------------------- Home End ----------------------------------- */
+
+
+
+/* ----------------------------------------Untuk Promo---------------------------------------- */
+
+#carousel, #carousel2 {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.slidePromo {
+  display: inline-block;
+  width: 30%;
+  margin-left: 5%;
+}
+.promoImage{
+  width: 100%;
+  border-radius: 30px;
+  border: 3px solid black;
+}
+
+/* ----------------------------------------Untuk Promo End---------------------------------------- */
+
+
+
+
+
+
+/* --------------------------------Untuk Culinary-------------------------------- */
+.openbtnCulinary{
+  background:#f1f1f1;
+  font-size: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: 1px groove;
+  border-color: green;
+  border-radius: 10px;
+  color:green;
+  padding: 1%;
+  float: left;
+  margin-bottom: 4%;
+  font-weight: bold;
+}
+
+.openbtnCulinary:hover{
+  background: orangered;
+  font-size: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: 1px groove;
+  border-color: orangered;
+  border-radius: 10px;
+  color:white;
+  padding: 1%;
+  float: left;
+  margin-bottom: 4%;
+  font-weight: bold;
+}
+
+.wrapCulinary{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 30%;
+    left: 50%;
+    width:50%;
+    /* margin:auto; */
+    background:#fff;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 30px 20px;
+}
+
+.overlayCulinary{
+  height:150%;
+  width:100%;
+  display:none;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+  background:rgba(0,0,0,0.8);
+}
+.rates{
+    position:absolute;
+    right:10px;
+    top:20px;
+}
+.closebtnCulinary{
+  position:absolute;
+  /* top:0%; */
+  /* right:10%; */
+  right: 10px;
+  top:-60px;
+  font-size:40px;
+  cursor: pointer;
+  color: red;
+}
+.cons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.cons img{
+    margin-right: 150px;
+}
+
+
+.con2{
+    margin: 30px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.cons h3{
+    font-weight: bold;
+    font-size: 20px;
+}
+.cons p{
+    font-weight: normal;
+    font-size: 14px;
+}
+.con2 button{
+    border: none;
+    padding: 10px 30px;
+    margin-left: 30px;
+    background: linear-gradient(94.09deg, #F05A2E 4.27%, #F02E2E 99.87%);
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* .ratingCulinary{
+  position: absolute;
+  top: 14%;
+  right: 15%;
+} */
+/* --------------------------------Untuk Culinary End-------------------------------- */
+
+
+
+/* --------------------------------Untuk Souvenir-------------------------------- */
+
+/* Kotak gambar dan deskripsi Souvenir */
+.kotakSouvenir{
+  width: 25%;
+  float: left;
+  margin-right: 6%;
+  box-shadow: 2px 4px gray;
+  border: 2px solid gray;
+  border-radius: 20px;
+}
+
+.checkButtonSouvenir{
+  border-radius: 10px;
+  border: 0px;
+  background-color: green;
+  color:white;
+  padding: 4%;
+  padding-left: 7%;
+  padding-right: 7%;
+  float:right;
+  margin-top: -10%;
+  margin-bottom: 5%;
+}
+
+.checkButtonSouvenir:hover{
+  border-radius: 10px;
+  border: 0px;
+  background-color: orangered;
+  color:white;
+  padding: 4%;
+  padding-left: 7%;
+  padding-right: 7%;
+  float:right;
+  margin-top: -10%;
+  margin-bottom: 5%;
+}
+
+.hargaSouvenir{
+  text-align: center;
+  color:green;
+  font-weight: bold;
+  float: center
+}
+
+.wrapSouvenir{
+  width:40%;
+  position: relative;
+  margin:auto;
+  background:#fff;
+  border-radius: 20px;
+  padding: 2%;
+  padding-left: 4%;
+  padding-right: 4%;
+  margin-top: 5%;
+}
+
+.buyNowSouvenir{
+  float: right;
+  padding: 2%;
+  padding-left: 8%;
+  padding-right: 8%;
+  margin-top: -8%;
+  background-color: green;
+  color:white;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.buyNowSouvenir:hover{
+  float: right;
+  padding: 2%;
+  padding-left: 8%;
+  padding-right: 8%;
+  margin-top: -8%;
+  background-color: orangered;
+  color:white;
+  border: 0px;
+  border-radius: 10px;
+}
+  /* --------------------------------Untuk Souvenir End-------------------------------- */
+
+  /* Untuk Destinasi Start */
+  .destinasiImage{
+    width: 300px;
+    height: 350px;
+    border-radius: 30px;
+    border: 3px solid black;
+  }
+
+  .destinasiSlide {
+    display: inline-block;
+    width: 20%;
+    margin-left: 5%;
+    color: white;
+  }
+  /* Untuk Destinasi End */
