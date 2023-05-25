@@ -29,7 +29,7 @@ culinary :
 - menu description :
   - gambar
   - review
-  - jempol / like salah hrusnya rating
+  - jempol / like salah harusnya rating
 
 destination :
 special event
