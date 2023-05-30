@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ViewController extends Controller
 {
+
+    //$path = public_path()
+
     public function index(){
         $culinary = Culinary::all()->first();
         $destination = Destination::all()->first();

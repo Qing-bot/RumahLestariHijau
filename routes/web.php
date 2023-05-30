@@ -55,24 +55,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     });
 });
 
-Route::post('/login/admin', [AuthController::class, 'login']);
-// Route::get('/admin', function(){
-//     return view('admin.home');
-// });
-
-// Logout
-// Route::get('/logout', function () {
-//     Session::flush();
-//     Session::forget('user');
-//     Auth::logout();
-//     return redirect('/login');
-// })->name('logout');
-
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
-Route::post('/logout', [AuthController::class, 'logout']);
 
+Route::get('/register', [AuthController::class, 'registration']);
+Route::post('/register', [AuthController::class, 'registerUser'])->name('register.custom');
 
 
 
@@ -169,17 +157,6 @@ Route::get('/destination', [ViewController::class, 'indexDestination'])->name('d
 Route::get('/contactUs', [ContactUsController::class, 'index']
 )->name('contactUs');
 
-Route::get('/register', function(){
-    // return view('auth.register');
-});
-
 Route::get('/destinationDetail/{id}', [ViewController::class, 'indexDestinationDetail'])->name('destinationDetail');
 
 Route::resource('products', ProductController::class);
-
-// Route::get('/logout', function () {
-//     Session::flush();
-//     Session::forget('user');
-//     Auth::logout();
-//     return redirect('/');
-// })->name('logout');

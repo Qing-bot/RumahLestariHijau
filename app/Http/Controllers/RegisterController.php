@@ -9,13 +9,17 @@ use App\Models\NearbyPlace;
 use App\Models\Photo;
 use App\Models\Promo;
 use App\Models\Souvenir;
+
 use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
+
 use Illuminate\Support\Facades\Storage;
+
+
 
 class RegisterController extends Controller {
 
+    //register user
     
 
     public function addHomestay(Request $request){
@@ -74,7 +78,7 @@ class RegisterController extends Controller {
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $thumb_path = 'thumb_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file, $thumb_path);
+            Storage::putFileAs('assets/img', $file, $thumb_path);
             // dd($thumb_path);
 
             $thumb_path = 'assets/img/'.$thumb_path;
@@ -124,7 +128,7 @@ class RegisterController extends Controller {
                 'upload' => 'image'
             ]);
             $img1 = time().'_1.'.$file1->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file1, $img1);
+            Storage::putFileAs('assets/img', $file1, $img1);
             $img1 = 'assets/img/'.$img1;
 
             $pho1 = new Photo();
@@ -138,7 +142,7 @@ class RegisterController extends Controller {
                 'upload2' => 'image'
             ]);
             $img2 = time().'_2.'.$file2->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file2, $img2);
+            Storage::putFileAs('assets/img', $file2, $img2);
             $img2 = 'assets/img/'.$img2;
 
             $pho2 = new Photo();
@@ -152,7 +156,7 @@ class RegisterController extends Controller {
                 'upload3' => 'image'
             ]);
             $img3 = time().'_3.'.$file3->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file3, $img3);
+            Storage::putFileAs('assets/img', $file3, $img3);
             $img3 = 'assets/img/'.$img3;
 
             $pho3 = new Photo();
@@ -166,7 +170,7 @@ class RegisterController extends Controller {
                 'upload4' => 'image'
             ]);
             $img4 = time().'_4.'.$file4->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file4, $img4);
+            Storage::putFileAs('assets/img', $file4, $img4);
             $img4 = 'assets/img/'.$img4;
 
             $pho4 = new Photo();
@@ -259,7 +263,7 @@ class RegisterController extends Controller {
             ]);
             $thumb_path = 'thumb_'.time().'.'.$file->getClientOriginalExtension();
             Storage::delete('public/'.$hs->thumbnail);
-            Storage::putFileAs('public/assets/img', $file, $thumb_path);
+            Storage::putFileAs('assets/img', $file, $thumb_path);
             $thumb_path = 'assets/img/'.$thumb_path;
             $hs->thumbnail = $thumb_path;
         }
@@ -305,7 +309,7 @@ class RegisterController extends Controller {
                 'upload2' => 'image'
             ]);
             $imgs = time().'_1.'.$file1->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file1, $imgs);
+            Storage::putFileAs('assets/img', $file1, $imgs);
             $imgs = 'assets/img/'.$imgs;
             if($count>=2){
                 Storage::delete('public/'.$hs->photo[0]->path);
@@ -329,7 +333,7 @@ class RegisterController extends Controller {
                 'upload2' => 'image'
             ]);
             $img2 = time().'_2.'.$file2->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file2, $img2);
+            Storage::putFileAs('assets/img', $file2, $img2);
             $img2 = 'assets/img/'.$img2;
             if($count>=2){
                 Storage::delete('public/'.$hs->photo[1]->path);
@@ -352,7 +356,7 @@ class RegisterController extends Controller {
                 'upload3' => 'image'
             ]);
             $img3 = time().'_3.'.$file3->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file3, $img3);
+            Storage::putFileAs('assets/img', $file3, $img3);
             $img3 = 'assets/img/'.$img3;
             if($count>=3){
                 Storage::delete('public/'.$hs->photo[2]->path);
@@ -375,7 +379,7 @@ class RegisterController extends Controller {
                 'upload4' => 'image'
             ]);
             $img4 = time().'_4.'.$file4->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file4, $img4);
+            Storage::putFileAs('assets/img', $file4, $img4);
             $img4 = 'assets/img/'.$img4;
             if($count>=4){
                 Storage::delete('public/'.$hs->photo[3]->path);
@@ -485,8 +489,9 @@ class RegisterController extends Controller {
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $cul_path = 'cul_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file, $cul_path);
-            // dd($cul_path);
+            Storage::putFileAs('assets/img', $file, $cul_path);
+            //Storage::disk("public")->put($cul_path, $file);
+            //dd($cul_path);
 
             $cul_path = 'assets/img/'.$cul_path;
         }
@@ -523,8 +528,8 @@ class RegisterController extends Controller {
             $dt = $dt->format('Ymd_His');
             $cul_path = 'cul_'.$dt.'.'.$file->getClientOriginalExtension();
             Storage::delete('public/'.$data->photo[0]->path);
-            Storage::putFileAs('public/assets/img', $file, $cul_path);
-            // dd($cul_path);
+            Storage::putFileAs('assets/img', $file, $cul_path);
+            //dd($cul_path);
 
             $cul_path = 'assets/img/'.$cul_path;
             $pho = $data->photo[0];
@@ -579,7 +584,7 @@ class RegisterController extends Controller {
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $des_path = 'des_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file, $des_path);
+            Storage::putFileAs('assets/img', $file, $des_path);
             // dd($des_path);
 
             $des_path = 'assets/img/'.$des_path;
@@ -602,7 +607,7 @@ class RegisterController extends Controller {
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $des_path = 'des_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file, $des_path);
+            Storage::putFileAs('assets/img', $file, $des_path);
             // dd($des_path);
 
             $des_path = 'assets/img/'.$des_path;
@@ -653,7 +658,7 @@ class RegisterController extends Controller {
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $sou_path = 'sou_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file, $sou_path);
+            Storage::putFileAs('assets/img', $file, $sou_path);
 
             $sou_path = 'assets/img/'.$sou_path;
             $data->photo = $sou_path;
@@ -684,7 +689,7 @@ class RegisterController extends Controller {
             $dt = $dt->format('Ymd_His');
             $sou_path = 'sou_'.$dt.'.'.$file->getClientOriginalExtension();
             Storage::delete('public/'.$data->photo);
-            Storage::putFileAs('public/assets/img', $file, $sou_path);
+            Storage::putFileAs('assets/img', $file, $sou_path);
 
             $sou_path = 'assets/img/'.$sou_path;
             $data->photo = $sou_path;
@@ -718,7 +723,7 @@ class RegisterController extends Controller {
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $pr_path = 'pr_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('public/assets/img', $file, $pr_path);
+            Storage::putFileAs('assets/img', $file, $pr_path);
 
             $pr_path = 'assets/img/'.$pr_path;
             $data->photo = $pr_path;
@@ -745,7 +750,7 @@ class RegisterController extends Controller {
             $dt = $dt->format('Ymd_His');
             $sou_path = 'sou_'.$dt.'.'.$file->getClientOriginalExtension();
             Storage::delete('public/'.$data->photo);
-            Storage::putFileAs('public/assets/img', $file, $sou_path);
+            Storage::putFileAs('assets/img', $file, $sou_path);
 
             $sou_path = 'assets/img/'.$sou_path;
             $data->photo = $sou_path;

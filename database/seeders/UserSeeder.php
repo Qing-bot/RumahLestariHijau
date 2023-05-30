@@ -24,7 +24,14 @@ class UserSeeder extends Seeder
            'isAdmin' => 1,
         ]);
 
-        \App\Models\User::factory(10)->create();
+        DB::table('users')->insert([
+            'name' => "User",
+            'email' => 'user@user.com',
+            'password' => Hash::make('12345678'),
+            'isAdmin' => 0,
+         ]);
+
+        //\App\Models\User::factory(10)->create();
 
     }
 }

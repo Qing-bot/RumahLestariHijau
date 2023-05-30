@@ -39,11 +39,6 @@
                     <li>
                         <a class="nav-link font-weight-bold text-success" href="/logout">
                             {{ __('Logout') }}
-
-                            <form action="/logout" method="POST">
-                            @csrf
-                            <button class="btn btn-danger">Logout</button>
-                            </form>
                         </a>
 
                     </li>

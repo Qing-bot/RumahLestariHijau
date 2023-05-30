@@ -83,6 +83,7 @@
                 <td>{{$data->description}}</td>
                 <td>{{$data->price}}</td>
                 <td>{{$data->like/1000}}K</td>
+                {{-- <td><img src="{{ asset($data->photo[0]->path) }}" alt="" width="100px"></td> --}}
                 <td><img src="{{Storage::url($data->photo[0]->path)}}" alt="" width="100px"></td>
                 {{-- <td>{{$data->photo[0]->path}}</td> --}}
                 <td>

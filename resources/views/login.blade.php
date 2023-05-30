@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Admin</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="style1.css">
     <link rel="stylesheet" type="text/css" href="boostrap.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -39,7 +39,7 @@
             height: 506px;
             text-align: center; box-shadow: 5px 12px 12px gray">
         <img src="gambar/logo.svg" style="width: 100%">
-        <form method="POST" action="/login/admin">
+        <form method="POST" action="/login">
             @csrf
 
             <input type="email" id="email" name="email" placeholder="Enter your name"

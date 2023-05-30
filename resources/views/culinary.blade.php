@@ -81,11 +81,13 @@
             <div id="list-item" style="width: 90%; display:inline-block">
                 @foreach ($culi as $data)
                 <div style="width: 30%; margin: 1%; display:inline-block">
-                    <img src="{{Storage::url($data->photo[0]->path)}}" style="width: 70%; border-radius: 10px">
+                    
+                    <td><img src="{{Storage::url($data->photo[0]->path)}}" alt="" width="100px"></td>
                     <p style="font-weight: bold">{{$data->name}}</p>
                     <button class="openbtnCulinary" onclick="openForm({{$data->id}})">More</button>
                 </div>
                 @endforeach
+
         </li>
     </ul>
 
@@ -106,7 +108,9 @@
             <b style="color:black; font-size: 200%">Menu Description</b>
         </div>
         <div class="cons">
-            <img src="{{Storage::url($data->photo[0]->path)}}" style="border-radius: 10px; width:30%">
+                {{-- <td><img src="asset($data->photo[0]->path)" alt="" width="100px"></td> --}}
+
+                <td><img src="{{Storage::url($data->photo[0]->path)}}" alt="" width="100px"></td>
             <div style="text-align: center; width: 400px">
                 <h3>{{$data->name}}</h3>
                 <p style="text-align: justify">
@@ -180,7 +184,7 @@
                 type: 'GET',
                 data: {'tes': tes},
                 success: function(data, data1){
-                    // console.log(data);
+                    //console.log(data);
                     data.homes.sort(dynamicSort(params, tes));
                     var html = "";
                     var home = data.homes;
@@ -193,12 +197,13 @@
                                     idx = y;
                                 }
                             }
-                            html += "<div style='width: 30%; margin: 1%; display:inline-block'><img src='/storage/" + photo[idx].path + "' style='width: 70%; border-radius: 10px'><p style='font-weight: bold'>" + home[i].name + "</p><button class='openbtnCulinary' onclick='openForm("+ home[i].id +")'>More</button></div>"
+                            html += "<div style='width: 30%; margin: 1%; display:inline-block'><img src='assets/img/" + photo[idx].path + "' style='width: 70%; border-radius: 10px'><p style='font-weight: bold'>" + home[i].name + "</p><button class='openbtnCulinary' onclick='openForm("+ home[i].id +")'>More</button></div>"
 
                         }
                     }
                     $("#list-item").html(html);
                     console.log(data)
+                
                 }
             })
         });
