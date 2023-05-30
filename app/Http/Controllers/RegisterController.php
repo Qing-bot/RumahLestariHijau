@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller {
+
+    
+
     public function addHomestay(Request $request){
         // $thumb
         $file = $request->file('thumbnail');

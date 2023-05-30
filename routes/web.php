@@ -47,17 +47,34 @@ Route::get('/', [ViewController::class, 'index']);
 Route::get('/login', function(){
     return view('login');
 });
-Route::post('/login/admin', [AuthController::class, 'login']);
-Route::get('/logout', function () {
-    Session::flush();
-    Session::forget('user');
-    Auth::logout();
-    return redirect('/login');
-})->name('logout');
 
-Route::get('/admin', function(){
-    return view('admin.home');
+// Admin
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin', function () {
+        return view('admin.home');
+    });
 });
+
+Route::post('/login/admin', [AuthController::class, 'login']);
+// Route::get('/admin', function(){
+//     return view('admin.home');
+// });
+
+// Logout
+// Route::get('/logout', function () {
+//     Session::flush();
+//     Session::forget('user');
+//     Auth::logout();
+//     return redirect('/login');
+// })->name('logout');
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/logout', [AuthController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
+
+
 
 // Homestay
 Route::get('/tableHomestay', [ViewController::class, 'indexAdminHomestay'])->name('tableHomestay');
@@ -160,9 +177,9 @@ Route::get('/destinationDetail/{id}', [ViewController::class, 'indexDestinationD
 
 Route::resource('products', ProductController::class);
 
-Route::get('/logout', function () {
-    Session::flush();
-    Session::forget('user');
-    Auth::logout();
-    return redirect('/');
-})->name('logout');
+// Route::get('/logout', function () {
+//     Session::flush();
+//     Session::forget('user');
+//     Auth::logout();
+//     return redirect('/');
+// })->name('logout');

@@ -62,17 +62,16 @@
                     @endguest
 
                     @if(Auth::check())
-                    <!-- <li>
-                        <a class="nav-link font-weight-bold text-success" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                        </a>
+                    
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
+                    <a class="nav-link font-weight-bold text-success" href="/logout">
+                        {{ __('Logout') }}
+
+                        <form action="/logout" method="POST">
+                        @csrf
+                        <button class="btn btn-danger">Logout</button>
                         </form>
-                    </li> -->
+                    </a>
 
                     <li class="nav-item dropdown" align="center">
                         <a class="nav-link font-weight-bold text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,9 +86,7 @@
                                     {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                            
 
                         </div>
                     </li>
@@ -175,3 +172,4 @@
     <footer>
 </body>
 </html>
+

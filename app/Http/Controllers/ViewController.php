@@ -10,6 +10,7 @@ use App\Models\Photo;
 use App\Models\Promo;
 use App\Models\Souvenir;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ViewController extends Controller
 {
@@ -20,7 +21,6 @@ class ViewController extends Controller
         // dd($culinary);
         return view('home', ['cul' => $culinary, 'hs' => $destination, 'pr'=>$promo]);
 
-        
     }
 
     public function indexHomestay(){
