@@ -1,2 +1,3 @@
-#ignore vendor
+#ignore file gak penting
+tests/
 vendor/
