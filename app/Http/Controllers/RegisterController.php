@@ -19,14 +19,14 @@ use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller {
 
-    //register user
-    
+    //helper function for taking first x characters without space for file name purpose
+    public function getName ($string, $length) {
+        return substr(str_replace(' ', '', $string), 0, $length);
+    }
 
     public function addHomestay(Request $request){
         // $thumb
         $file = $request->file('thumbnail');
-
-
         $file1 = $request->file('upload');
         $file2 = $request->file('upload2');
         $file3 = $request->file('upload3');
@@ -454,7 +454,7 @@ class RegisterController extends Controller {
     public function deleteHomestay(Request $request, $id){
         $homestay = Homestay::find($id);
         $homestay->nearby_place->each->delete();
-        Storage::delete('public/'.$homestay->thumbnail);
+        Storage::delete($homestay->thumbnail);
         foreach ($homestay->photo as $key) {
             Storage::delete('public/'.$key->path);
         }
@@ -488,12 +488,12 @@ class RegisterController extends Controller {
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
-            $cul_path = 'cul_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file, $cul_path);
-            //Storage::disk("public")->put($cul_path, $file);
+            $temp = $this->getName($data->name, 10);
+            $cul_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::putFileAs('culinary_img/', $file, $cul_path);
             //dd($cul_path);
 
-            $cul_path = 'assets/img/'.$cul_path;
+            $cul_path = 'culinary_img/'.$cul_path;
         }
         $pho = new Photo();
         $pho->category_id = 1;
@@ -526,12 +526,13 @@ class RegisterController extends Controller {
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
-            $cul_path = 'cul_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::delete('public/'.$data->photo[0]->path);
-            Storage::putFileAs('assets/img', $file, $cul_path);
+            $temp = $this->getName($data->name, 10);
+            $cul_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::delete($data->photo[0]->path);
+            Storage::putFileAs('culinary_img/', $file, $cul_path);
             //dd($cul_path);
 
-            $cul_path = 'assets/img/'.$cul_path;
+            $cul_path = 'culinary_img/'.$cul_path;
             $pho = $data->photo[0];
             $pho->path = $cul_path;
             $pho->save();
@@ -543,7 +544,7 @@ class RegisterController extends Controller {
     public function deleteCulinary(Request $request, $id){
         $data = Culinary::find($id);
         foreach ($data->photo as $key) {
-            Storage::delete('public/'.$key->path);
+            Storage::delete($key->path);
         }
         $data->photo->each->delete();
         $data->comment_list->each->delete();
@@ -583,11 +584,12 @@ class RegisterController extends Controller {
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
-            $des_path = 'des_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file, $des_path);
+            $temp = $this->getName($data->name, 10);
+            $des_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::putFileAs('destination_img/', $file, $des_path);
             // dd($des_path);
 
-            $des_path = 'assets/img/'.$des_path;
+            $des_path = 'destination_img/'.$des_path;
             $data->photo = $des_path;
         }
 
@@ -599,18 +601,19 @@ class RegisterController extends Controller {
         $file = $request->file('image');
         $data = Destination::find($id);
 
-
         if($file!=null){
             $request->validate([
                 'image' => 'image'
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
-            $des_path = 'des_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file, $des_path);
+            $temp = $this->getName($data->name, 10);
+            $des_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::delete($data->photo);
+            Storage::putFileAs('destination_img/', $file, $des_path);
             // dd($des_path);
 
-            $des_path = 'assets/img/'.$des_path;
+            $des_path = 'destination_img/'.$des_path;
             $data->photo = $des_path;
         }
         $data->name = $request->name;
@@ -628,7 +631,7 @@ class RegisterController extends Controller {
     }
     public function deleteDestination(Request $request, $id){
         $data = Destination::find($id);
-        Storage::delete('public/'.$data->photo);
+        Storage::delete($data->photo);
         $data->delete();
 
 
@@ -657,10 +660,11 @@ class RegisterController extends Controller {
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
-            $sou_path = 'sou_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file, $sou_path);
+            $temp = $this->getName($data->name, 10);
+            $sou_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::putFileAs('souvenir_img/', $file, $sou_path);
 
-            $sou_path = 'assets/img/'.$sou_path;
+            $sou_path = 'souvenir_img/'.$sou_path;
             $data->photo = $sou_path;
         }
 
@@ -687,11 +691,12 @@ class RegisterController extends Controller {
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
-            $sou_path = 'sou_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::delete('public/'.$data->photo);
-            Storage::putFileAs('assets/img', $file, $sou_path);
+            $temp = $this->getName($data->name, 10);
+            $sou_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::delete($data->photo);
+            Storage::putFileAs('souvenir_img/', $file, $sou_path);
 
-            $sou_path = 'assets/img/'.$sou_path;
+            $sou_path = 'souvenir_img/'.$sou_path;
             $data->photo = $sou_path;
         }
 
@@ -700,7 +705,7 @@ class RegisterController extends Controller {
     }
     public function deleteSouvenir(Request $request, $id){
         $data = Souvenir::find($id);
-        Storage::delete('public/'.$data->photo);
+        Storage::delete($data->photo);
         $data->delete();
         return redirect()->back()->with('success', 'Souvenir deleted successfully');
     }
@@ -722,10 +727,11 @@ class RegisterController extends Controller {
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
-            $pr_path = 'pr_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file, $pr_path);
+            $temp = $this->getName($data->name, 10);
+            $pr_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::putFileAs('promo_img/', $file, $pr_path);
 
-            $pr_path = 'assets/img/'.$pr_path;
+            $pr_path = 'promo_img/'.$pr_path;
             $data->photo = $pr_path;
         }
 
@@ -748,12 +754,13 @@ class RegisterController extends Controller {
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
-            $sou_path = 'sou_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::delete('public/'.$data->photo);
-            Storage::putFileAs('assets/img', $file, $sou_path);
+            $temp = $this->getName($data->name, 10);
+            $pr_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::delete($data->photo);
+            Storage::putFileAs('promo_img', $file, $pr_path);
 
-            $sou_path = 'assets/img/'.$sou_path;
-            $data->photo = $sou_path;
+            $pr_path = 'promo_img/'.$pr_path;
+            $data->photo = $pr_path;
         }
 
         $data->save();
@@ -761,7 +768,7 @@ class RegisterController extends Controller {
     }
     public function deletePromo(Request $request, $id){
         $data = Promo::find($id);
-        Storage::delete('public/'.$data->photo);
+        Storage::delete($data->photo);
         $data->delete();
         return redirect()->back()->with('success', 'Promo deleted successfully');
     }
