@@ -108,9 +108,7 @@
             <b style="color:black; font-size: 200%">Menu Description</b>
         </div>
         <div class="cons">
-                {{-- <td><img src="asset($data->photo[0]->path)" alt="" width="100px"></td> --}}
-
-                <td><img src="{{Storage::url($data->photo[0]->path)}}" alt="" width="100px"></td>
+        <td><img src="{{Storage::url($data->photo[0]->path)}}" alt="" width="100px"></td>
             <div style="text-align: center; width: 400px">
                 <h3>{{$data->name}}</h3>
                 <p style="text-align: justify">

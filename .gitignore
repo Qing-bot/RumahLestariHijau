@@ -1,3 +1,5 @@
 #ignore folder tidak pernah diupdate
 /vendor
 /tests
+/storage/framework
+/storage/logs
