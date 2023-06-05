@@ -97,7 +97,7 @@
             <b style="color:black; font-size: 200%">Menu Description</b>
         </div>
         <div class="cons">
-            <td><img src="<?php echo e(Storage::url($data->photo[0]->path)); ?>" alt="" width="100px"></td>
+        <td><img src="<?php echo e(Storage::url($data->photo[0]->path)); ?>" alt="" width="100px"></td>
             <div style="text-align: center; width: 400px">
                 <h3><?php echo e($data->name); ?></h3>
                 <p style="text-align: justify">
@@ -109,7 +109,8 @@
         <form>
             <div class="con2">
                 <div>
-                    Rp. <?php echo e($data->price); ?>,00
+                    Rp. <?php echo e($data->price); ?>
+
                     <a href="https://api.whatsapp.com/send?phone=6285155488011&text=Saya%20Ingin%20Memesan%20Makanan%20<?php echo e($data->name); ?>" target="_blank"><button type="button">Order Food</button></a>
                 </div>
             </div>
@@ -176,7 +177,7 @@
                                     idx = y;
                                 }
                             }
-                            html += "<div style='width: 30%; margin: 1%; display:inline-block'><img src= "photo[idx].path" style='width: 70%; border-radius: 10px'><p style='font-weight: bold'>" + home[i].name + "</p><button class='openbtnCulinary' onclick='openForm("+ home[i].id +")'>More</button></div>"
+                            html += "<div style='width: 30%; margin: 1%; display:inline-block'><img src='assets/img/" + photo[idx].path + "' style='width: 70%; border-radius: 10px'><p style='font-weight: bold'>" + home[i].name + "</p><button class='openbtnCulinary' onclick='openForm("+ home[i].id +")'>More</button></div>"
 
                         }
                     }

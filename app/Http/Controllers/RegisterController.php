@@ -77,11 +77,10 @@ class RegisterController extends Controller {
             ]);
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
             $thumb_path = 'thumb_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file, $thumb_path);
-            // dd($thumb_path);
-
-            $thumb_path = 'assets/img/'.$thumb_path;
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file, $thumb_path);
+            $thumb_path = 'homestay_img/'.$temp.'/'.$thumb_path;
         }
 
 
@@ -127,56 +126,72 @@ class RegisterController extends Controller {
             $request->validate([
                 'upload' => 'image'
             ]);
-            $img1 = time().'_1.'.$file1->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file1, $img1);
-            $img1 = 'assets/img/'.$img1;
+
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $img1_path = 'img1_'.$dt.'.'.$file1->getClientOriginalExtension();
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file1, $img1_path);
+            $img1_path = 'homestay_img/'.$temp.'/'.$img1_path;
 
             $pho1 = new Photo();
             $pho1->table_id = $hs->id;
             $pho1->category_id = 2;
-            $pho1->path = $img1;
+            $pho1->path = $img1_path;
             $pho1->save();
         }
         if($file2!=null){
             $request->validate([
                 'upload2' => 'image'
             ]);
-            $img2 = time().'_2.'.$file2->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file2, $img2);
-            $img2 = 'assets/img/'.$img2;
+
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $img2_path = 'img2_'.$dt.'.'.$file2->getClientOriginalExtension();
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file2, $img2_path);
+            $img2_path = 'homestay_img/'.$temp.'/'.$img2_path;
 
             $pho2 = new Photo();
             $pho2->table_id = $hs->id;
             $pho2->category_id = 2;
-            $pho2->path = $img2;
+            $pho2->path = $img2_path;
             $pho2->save();
         }
         if($file3!=null){
             $request->validate([
                 'upload3' => 'image'
             ]);
-            $img3 = time().'_3.'.$file3->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file3, $img3);
-            $img3 = 'assets/img/'.$img3;
+
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $img3_path = 'img3_'.$dt.'.'.$file1->getClientOriginalExtension();
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file3, $img3_path);
+            $img3_path = 'homestay_img/'.$temp.'/'.$img3_path;
 
             $pho3 = new Photo();
             $pho3->table_id = $hs->id;
             $pho3->category_id = 2;
-            $pho3->path = $img3;
+            $pho3->path = $img3_path;
             $pho3->save();
         }
         if($file4!=null){
             $request->validate([
                 'upload4' => 'image'
             ]);
-            $img4 = time().'_4.'.$file4->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file4, $img4);
-            $img4 = 'assets/img/'.$img4;
+
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $img4_path = 'img4_'.$dt.'.'.$file4->getClientOriginalExtension();
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file4, $img4_path);
+            $img4_path = 'homestay_img/'.$temp.'/'.$img4_path;
 
             $pho4 = new Photo();
             $pho4->table_id = $hs->id;
             $pho4->category_id = 2;
-            $pho4->path = $img4;
+            $pho4->path = $img4_path;
             $pho4->save();
         }
 
@@ -261,10 +276,14 @@ class RegisterController extends Controller {
             $request->validate([
                 'thumbnail' => 'image'
             ]);
-            $thumb_path = 'thumb_'.time().'.'.$file->getClientOriginalExtension();
-            Storage::delete('public/'.$hs->thumbnail);
-            Storage::putFileAs('assets/img', $file, $thumb_path);
-            $thumb_path = 'assets/img/'.$thumb_path;
+
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $thumb_path = 'thumb_'.$dt.'.'.$file->getClientOriginalExtension();
+            Storage::delete($hs->thumbnail);
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file, $thumb_path);
+            $thumb_path = 'homestay_img/'.$temp.'/'.$thumb_path;
             $hs->thumbnail = $thumb_path;
         }
 
@@ -308,21 +327,26 @@ class RegisterController extends Controller {
             $request->validate([
                 'upload2' => 'image'
             ]);
-            $imgs = time().'_1.'.$file1->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file1, $imgs);
-            $imgs = 'assets/img/'.$imgs;
+
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $img1_path = 'img1_'.$dt.'.'.$file1->getClientOriginalExtension();
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file1, $img1_path);
+            $img1_path = 'homestay_img/'.$temp.'/'.$img1_path;
+
             if($count>=2){
-                Storage::delete('public/'.$hs->photo[0]->path);
+                Storage::delete($hs->photo[0]->path);
                 $hs->photo[0]->table_id = $hs->id;
                 $hs->photo[0]->category_id = 2;
-                $hs->photo[0]->path = $imgs;
+                $hs->photo[0]->path = $img1_path;
                 $hs->photo[0]->save();
             }
             else{
                 $pho1 = new Photo();
                 $pho1->table_id = $hs->id;
                 $pho1->category_id = 2;
-                $pho1->path = $imgs;
+                $pho1->path = $img1_path;
                 $pho1->save();
             }
 
@@ -332,21 +356,24 @@ class RegisterController extends Controller {
             $request->validate([
                 'upload2' => 'image'
             ]);
-            $img2 = time().'_2.'.$file2->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file2, $img2);
-            $img2 = 'assets/img/'.$img2;
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $img2_path = 'img2_'.$dt.'.'.$file2->getClientOriginalExtension();
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file2, $img2_path);
+            $img2_path = 'homestay_img/'.$temp.'/'.$img2_path;
             if($count>=2){
-                Storage::delete('public/'.$hs->photo[1]->path);
+                Storage::delete($hs->photo[1]->path);
                 $hs->photo[1]->table_id = $hs->id;
                 $hs->photo[1]->category_id = 2;
-                $hs->photo[1]->path = $img2;
+                $hs->photo[1]->path = $img2_path;
                 $hs->photo[1]->save();
             }
             else{
                 $pho2 = new Photo();
                 $pho2->table_id = $hs->id;
                 $pho2->category_id = 2;
-                $pho2->path = $img2;
+                $pho2->path = $img2_path;
                 $pho2->save();
             }
 
@@ -355,21 +382,24 @@ class RegisterController extends Controller {
             $request->validate([
                 'upload3' => 'image'
             ]);
-            $img3 = time().'_3.'.$file3->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file3, $img3);
-            $img3 = 'assets/img/'.$img3;
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $img3_path = 'img3_'.$dt.'.'.$file3->getClientOriginalExtension();
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file3, $img3_path);
+            $img3_path = 'homestay_img/'.$temp.'/'.$img3_path;
             if($count>=3){
-                Storage::delete('public/'.$hs->photo[2]->path);
+                Storage::delete($hs->photo[2]->path);
                 $hs->photo[2]->table_id = $hs->id;
                 $hs->photo[2]->category_id = 2;
-                $hs->photo[2]->path = $img3;
+                $hs->photo[2]->path = $img3_path;
                 $hs->photo[2]->save();
             }
             else{
                 $pho3 = new Photo();
                 $pho3->table_id = $hs->id;
                 $pho3->category_id = 2;
-                $pho3->path = $img3;
+                $pho3->path = $img3_path;
                 $pho3->save();
             }
 
@@ -378,21 +408,24 @@ class RegisterController extends Controller {
             $request->validate([
                 'upload4' => 'image'
             ]);
-            $img4 = time().'_4.'.$file4->getClientOriginalExtension();
-            Storage::putFileAs('assets/img', $file4, $img4);
-            $img4 = 'assets/img/'.$img4;
+            $dt = new DateTime();
+            $dt = $dt->format('Ymd_His');
+            $temp = $this->getName($request->name, 10);
+            $img4_path = 'img4_'.$dt.'.'.$file4->getClientOriginalExtension();
+            Storage::putFileAs('homestay_img/'.$temp.'/', $file4, $img4_path);
+            $img4_path = 'homestay_img/'.$temp.'/'.$img4_path;
             if($count>=4){
-                Storage::delete('public/'.$hs->photo[3]->path);
+                Storage::delete($hs->photo[3]->path);
                 $hs->photo[3]->table_id = $hs->id;
                 $hs->photo[3]->category_id = 2;
-                $hs->photo[3]->path = $img4;
+                $hs->photo[3]->path = $img4_path;
                 $hs->photo[3]->save();
             }
             else{
                 $pho4 = new Photo();
                 $pho4->table_id = $hs->id;
                 $pho4->category_id = 2;
-                $pho4->path = $img4;
+                $pho4->path = $img4_path;
                 $pho4->save();
             }
 
@@ -454,10 +487,13 @@ class RegisterController extends Controller {
     public function deleteHomestay(Request $request, $id){
         $homestay = Homestay::find($id);
         $homestay->nearby_place->each->delete();
-        Storage::delete($homestay->thumbnail);
-        foreach ($homestay->photo as $key) {
-            Storage::delete('public/'.$key->path);
-        }
+        
+        // Storage::delete($homestay->thumbnail);
+        // foreach ($homestay->photo as $key) {
+        //     Storage::delete($key->path);
+        // }
+        Storage::deleteDirectory('homestay_img/'.$homestay->name);
+        
         $homestay->photo->each->delete();
         $homestay->comment_list->each->delete();
         $homestay->delete();

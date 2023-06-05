@@ -119,7 +119,7 @@
         <form>
             <div class="con2">
                 <div>
-                    Rp. {{$data->price}},00
+                    Rp. {{$data->price}}
                     <a href="https://api.whatsapp.com/send?phone=6285155488011&text=Saya%20Ingin%20Memesan%20Makanan%20{{ $data->name }}" target="_blank"><button type="button">Order Food</button></a>
                 </div>
             </div>
