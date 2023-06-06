@@ -71,7 +71,18 @@
 <!-- <div style="display: flex; box-sizing: border-box; padding: 0 20px; border: 1px solid #ddd; border-radius: 5px;" id="homeStay"> -->
     <ul style="width : 25%">
         <li style="list-style: none">
-            
+            <P style="color: #25b448">
+                <b>
+                    Price Range
+                </b>
+            </P>
+
+            <div style="width: 100%; display: flex">
+                <input type="text" class="form-control" id="inputPrice1" placeholder="min"
+                    style="width: 100px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">
+                <input type="text" class="form-control" id="inputPrice2" placeholder="max"
+                    style="margin-left: 20px; width: 100px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">
+            </div>
 
             <p style="margin-top: 5%; color: #25b448">
                 <b>
@@ -149,7 +160,6 @@
         <li style="list-style: none; width: 100%; border: outset 3px; border-radius: 35px; margin-bottom: 5%">
             <div style="width: 100%; height: 100%">
                 <div style="display: flex">
-
                     <ul style="width: 45%; padding-left: 1%">
                         <li style="list-style: none; width: 100%;">
                             <!-- <div style="">
@@ -157,11 +167,10 @@
                                     style="width: 100%; padding-top: 5%; padding-left: 2%; padding-bottom: 5%">
                             </div> -->
                             <div style="max-width: 100%; height: auto; text-align: center;">
-                                <img src="<?php echo e(Storage::url($data->thumbnail)); ?>" alt="Thumbnail" style="max-width: 100%; height: auto;">
+                                <img src="<?php echo e(Storage::url($data->homestay_photo[0]->path)); ?>" alt="Thumbnail" style="max-width: 100%; height: auto;">
                             </div>
                         </li>
                     </ul>
-
                     <ul style="width: 35%; padding-left: 2%; padding-top: 2%">
                         <li style="list-style: none;">
                             <h5>
@@ -263,13 +272,16 @@
 
     </div>
     <div style="display: flex;justify-content:center;align-items: center;width: fit-content; height:fit-content;margin-bottom: 30px">
-        <img src="<?php echo e(Storage::url($data->thumbnail)); ?>"
-            style="width: 50%; float: left; margin: 1%; border-top-left-radius: 20px; border-bottom-left-radius: 20px">
-        <div class="tes" style="width:100;display:grid;grid-template-columns: 1fr 1fr ;grid-template-rows: 1fr 1fr; row-gap: 10px; column-gap: 30px">
-            <?php $__currentLoopData = $data->photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <img src="<?php echo e(Storage::url($pho->path)); ?>" style="width: 100%; float: left; margin: 1%">
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
+        <?php $__currentLoopData = $data->homestay_photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($data->index == 1): ?>
+            <img src="<?php echo e(Storage::url($pho->path)); ?>"
+                style="width: 50%; float: left; margin: 1%; border-top-left-radius: 20px; border-bottom-left-radius: 20px">
+            <?php else: ?>
+            <div class="tes" style="width:100;display:grid;grid-template-columns: 1fr 1fr ;grid-template-rows: 1fr 1fr; row-gap: 10px; column-gap: 30px">
+                <img src="<?php echo e(Storage::url($pho->path)); ?>" style="width: 100%; float: left; margin: 1%">
+            </div>
+            <?php endif; ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
     <div style="display: flex;">
         <ul style="list-style: none; width: 40%">

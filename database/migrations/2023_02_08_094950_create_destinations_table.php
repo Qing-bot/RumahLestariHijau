@@ -20,10 +20,6 @@ return new class extends Migration
             $table->text('rundown');
             $table->string('maps');
             $table->string('photo');
-            $table->integer('price1');
-            $table->integer('price2');
-            $table->integer('price3');
-            $table->integer('price4');
             $table->timestamps();
         });
     }

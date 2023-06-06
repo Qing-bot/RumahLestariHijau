@@ -45,7 +45,7 @@
 
             <div style="width: 100%; margin-top: 0px; display: flex">
                 <input type="radio" class="form-control" id="like" placeholder="min" style="width: 15px;"
-                    name="sort_by" value="2">
+                    name="sort_by" value="3">
                 <p style="margin-top: 6px; margin-left: 10px">
                     Most Like
                 </p>
@@ -82,7 +82,7 @@
                 @foreach ($culi as $data)
                 <div style="width: 30%; margin: 1%; display:inline-block">
                     
-                    <td><img src="{{Storage::url($data->photo[0]->path)}}" alt="" width="100px"></td>
+                    <td><img src="{{Storage::url($data->photo)}}" alt="" width="100px"></td>
                     <p style="font-weight: bold">{{$data->name}}</p>
                     <button class="openbtnCulinary" onclick="openForm({{$data->id}})">More</button>
                 </div>
@@ -108,9 +108,7 @@
             <b style="color:black; font-size: 200%">Menu Description</b>
         </div>
         <div class="cons">
-                {{-- <td><img src="asset($data->photo[0]->path)" alt="" width="100px"></td> --}}
-
-                <td><img src="{{Storage::url($data->photo[0]->path)}}" alt="" width="100px"></td>
+        <td><img src="{{Storage::url($data->photo)}}" alt="" width="100px"></td>
             <div style="text-align: center; width: 400px">
                 <h3>{{$data->name}}</h3>
                 <p style="text-align: justify">
@@ -121,7 +119,7 @@
         <form>
             <div class="con2">
                 <div>
-                    Rp. {{$data->price}},00
+                    Rp. {{$data->price}}
                     <a href="https://api.whatsapp.com/send?phone=6285155488011&text=Saya%20Ingin%20Memesan%20Makanan%20{{ $data->name }}" target="_blank"><button type="button">Order Food</button></a>
                 </div>
             </div>
@@ -197,7 +195,7 @@
                                     idx = y;
                                 }
                             }
-                            html += "<div style='width: 30%; margin: 1%; display:inline-block'><img src='assets/img/" + photo[idx].path + "' style='width: 70%; border-radius: 10px'><p style='font-weight: bold'>" + home[i].name + "</p><button class='openbtnCulinary' onclick='openForm("+ home[i].id +")'>More</button></div>"
+                            html += "<div style='width: 30%; margin: 1%; display:inline-block'><img src='culinary_img/" + photo[idx].path + "' style='width: 70%; border-radius: 10px'><p style='font-weight: bold'>" + home[i].name + "</p><button class='openbtnCulinary' onclick='openForm("+ home[i].id +")'>More</button></div>"
 
                         }
                     }

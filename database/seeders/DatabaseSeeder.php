@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CulinarySeeder::class);
         $this->call(DestinationSeeder::class);
         $this->call(HomestaySeeder::class);
-        $this->call(PhotoSeeder::class);
         $this->call(PromoSeeder::class);
         $this->call(SouvenirSeeder::class);
         $this->call(UserSeeder::class);

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,18 +18,19 @@ class PromoSeeder extends Seeder
     {
         DB::table('promos')->insert([
             [
-                'name' => "1",
-                'photo' => "assets/img/pr1.png"
+                'id' => 1,
+                'name' => "11.11 Mega Promo",
+                'photo' => "promo_img/11.11MegaP_seeder.jpg",
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name' => "2",
-                'photo' => "assets/img/pr2.png"
-            ],
-            [
-                'name' => "3",
-                'photo' => "assets/img/pr3.png"
-            ],
-
+                'id' => 2,
+                'name' => "Super Promo",
+                'photo' => "promo_img/SuperPromo_seeder.jpg",
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]
         ]);
     }
 }

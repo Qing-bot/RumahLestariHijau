@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('photos', function (Blueprint $table) {
+        Schema::create('homestay_photos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('table_id');
-            $table->bigInteger('category_id');
+            $table->bigInteger('homestay_id');
+            $table->integer('index');
             $table->string('path');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('photos');
+        Schema::dropIfExists('homestay_photos');
     }
 };
