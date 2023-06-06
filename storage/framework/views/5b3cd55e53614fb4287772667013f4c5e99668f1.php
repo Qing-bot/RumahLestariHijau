@@ -106,13 +106,9 @@
                 </td>
                 <td>Rp. <?php echo e($data->price); ?></td>
                 <td>
-                    <img src="<?php echo e(Storage::url($data->thumbnail)); ?>" width="100px">
-
-                    <?php $__currentLoopData = $data->photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $data->homestay_photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <img src="<?php echo e(Storage::url($pho->path)); ?>" width="100px">
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    
-
                 </td>
 
                 <td>

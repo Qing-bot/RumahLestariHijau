@@ -22,7 +22,7 @@ class HomestaySeeder extends Seeder
                 'name' => 'Sleepezz Equestrian Park Hotel',
                 'location' => 'Jakarta, Indonesia',
                 'host' => 'Host A',
-                'maps'=> 'Jl. Pulomas Jaya Via, Jl. Kayu Putih Raya, RW.16, Kayu Putih, Pulo Gadung, East Jakarta City, Jakarta 13210',
+                'address'=> 'Jl. Pulomas Jaya Via, Jl. Kayu Putih Raya, RW.16, Kayu Putih, Pulo Gadung, East Jakarta City, Jakarta 13210',
                 'rating' => 4.0,
                 'like' => 9600,
                 'price' => 500000,
@@ -42,7 +42,7 @@ class HomestaySeeder extends Seeder
                 'name' => 'Homestay B',
                 'location' => 'Samarinda, Indonesia',
                 'host' => 'Host B',
-                'maps'=> 'Jl. Aminah Syukur',
+                'address'=> 'Jl. Aminah Syukur',
                 'rating' => 3.2,
                 'like' => 96000,
                 'price' => 600000,
@@ -141,6 +141,118 @@ class HomestaySeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ], 
+        ]);
+
+        DB::table('nearby_places')->insert(
+        [
+            [
+                'id' => 1,
+                'homestay_id' => 1,
+                'name' => "Pantai A",
+                'distance' => 333,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 2,
+                'homestay_id' => 1,
+                'name' => "Pantai B",
+                'distance' => 4444,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ], 
+            [
+                'id' => 3,
+                'homestay_id' => 1,
+                'name' => "Pantai C",
+                'distance' => 55.1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ], 
+            [
+                'id' => 4,
+                'homestay_id' => 1,
+                'name' => "Pantai D",
+                'distance' => 55,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ], 
+            [
+                'id' => 5,
+                'homestay_id' => 2,
+                'name' => "Pantai AA",
+                'distance' => 77,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 6,
+                'homestay_id' => 2,
+                'name' => "Pantai BB",
+                'distance' => 888.8,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]
+        ]);
+
+        DB::table('popular_places')->insert(
+        [
+            [
+                'id' => 1,
+                'homestay_id' => 1,
+                'name' => "Pantai E",
+                'distance' => 333.3,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 2,
+                'homestay_id' => 1,
+                'name' => "Pantai F",
+                'distance' => 333.4,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ], 
+            [
+                'id' => 3,
+                'homestay_id' => 1,
+                'name' => "Pantai G",
+                'distance' => 6,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ], 
+            [
+                'id' => 4,
+                'homestay_id' => 1,
+                'name' => "Pantai H",
+                'distance' => 99,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ], 
+            [
+                'id' => 5,
+                'homestay_id' => 2,
+                'name' => "Pantai EE",
+                'distance' => 77,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 6,
+                'homestay_id' => 2,
+                'name' => "Pantai FF",
+                'distance' => 888.2,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 7,
+                'homestay_id' => 2,
+                'name' => "Pantai GG",
+                'distance' => 77.1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]
         ]);
     }
 }

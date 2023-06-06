@@ -96,61 +96,122 @@
 
     <strong>Nearby Place 1</strong><br>
     <div class="form-group">
-        <label for="place1">Place name</label>
-        <input id="place1" type="text" class="form-control" name='place1' placeholder="Place 1">
-        @error('place1')
+        <label for="nearbyplace1">Place name</label>
+        <input id="nearbyplace1" type="text" class="form-control" name='nearbyplace1' placeholder="Place 1">
+        @error('nearbyplace1')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
     <div class="form-group">
-        <label for="distance1">Place Distance (km)</label>
-        <input id="distance1" type="text" class="form-control" name='distance1' placeholder="3">
-        @error('distance1')
+        <label for="nearbydistance1">Place Distance (km)</label>
+        <input id="nearbydistance1" type="text" class="form-control" name='nearbydistance1' placeholder="3">
+        @error('nearbydistance1')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
     <strong>Nearby Place 2</strong><br>
     <div class="form-group">
-        <label for="place2">Place name</label>
-        <input id="place2" type="text" class="form-control" name='place2' placeholder="Place 2">
-        @error('place2')
+        <label for="nearbyplace2">Place name</label>
+        <input id="nearbyplace2" type="text" class="form-control" name='nearbyplace2' placeholder="Place 2">
+        @error('nearbyplace2')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
     <div class="form-group">
-        <label for="distance2">Place Distance (km)</label>
-        <input id="distance2" type="text" class="form-control" name='distance2' placeholder="3">
-        @error('distance2')
+        <label for="nearbydistance2">Place Distance (km)</label>
+        <input id="nearbydistance2" type="text" class="form-control" name='nearbydistance2' placeholder="3">
+        @error('nearbydistance2')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
     <strong>Nearby Place 3</strong><br>
     <div class="form-group">
-        <label for="place3">Place name</label>
-        <input id="place3" type="text" class="form-control" name='place3' placeholder="Place 3">
-        @error('place3')
+        <label for="nearbyplace3">Place name</label>
+        <input id="nearbyplace3" type="text" class="form-control" name='nearbyplace3' placeholder="Place 3">
+        @error('nearbyplace3')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
     <div class="form-group">
-        <label for="distance3">Place Distance (km)</label>
-        <input id="distance3" type="text" class="form-control" name='distance3' placeholder="3">
-        @error('distance3')
+        <label for="nearbydistance3">Place Distance (km)</label>
+        <input id="nearbydistance3" type="text" class="form-control" name='nearbydistance3' placeholder="3">
+        @error('nearbydistance3')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
     <strong>Nearby Place 4</strong><br>
     <div class="form-group">
-        <label for="place4">Place name</label>
-        <input id="place4" type="text" class="form-control" name='place4' placeholder="Place 4">
-        @error('place4')
+        <label for="nearbyplace4">Place name</label>
+        <input id="nearbyplace4" type="text" class="form-control" name='nearbyplace4' placeholder="Place 4">
+        @error('nearbyplace4')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
     <div class="form-group">
-        <label for="distance4">Place Distance (km)</label>
-        <input id="distance4" type="text" class="form-control" name='distance4' placeholder="3">
-        @error('distance4')
+        <label for="nearbydistance4">Place Distance (km)</label>
+        <input id="nearbydistance4" type="text" class="form-control" name='nearbydistance4' placeholder="3">
+        @error('nearbydistance4')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <strong>Popular Place 1</strong><br>
+    <div class="form-group">
+        <label for="popularplace1">Place name</label>
+        <input id="popularplace1" type="text" class="form-control" name='popularplace1' placeholder="Place 1">
+        @error('popularplace1')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-group">
+        <label for="populardistance1">Place Distance (km)</label>
+        <input id="populardistance1" type="text" class="form-control" name='populardistance1' placeholder="3">
+        @error('populardistance1')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <strong>Popular Place 2</strong><br>
+    <div class="form-group">
+        <label for="popularplace2">Place name</label>
+        <input id="popularplace2" type="text" class="form-control" name='popularplace2' placeholder="Place 2">
+        @error('popularplace2')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-group">
+        <label for="populardistance2">Place Distance (km)</label>
+        <input id="populardistance2" type="text" class="form-control" name='populardistance2' placeholder="3">
+        @error('populardistance2')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <strong>Popular Place 3</strong><br>
+    <div class="form-group">
+        <label for="popularplace3">Place name</label>
+        <input id="popularplace3" type="text" class="form-control" name='popularplace3' placeholder="Place 3">
+        @error('popularplace3')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-group">
+        <label for="populardistance3">Place Distance (km)</label>
+        <input id="populardistance3" type="text" class="form-control" name='populardistance3' placeholder="3">
+        @error('populardistance3')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <strong>Nearby Place 4</strong><br>
+    <div class="form-group">
+        <label for="popularplace4">Place name</label>
+        <input id="popularplace4" type="text" class="form-control" name='popularplace4' placeholder="Place 4">
+        @error('popularplace4')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-group">
+        <label for="populardistance4">Place Distance (km)</label>
+        <input id="populardistance4" type="text" class="form-control" name='populardistance4' placeholder="3">
+        @error('populardistance4')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>

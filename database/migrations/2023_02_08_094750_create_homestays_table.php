@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('location');
             $table->string('host');
-            $table->text('maps');
+            $table->text('address');
             $table->double('rating');
             $table->integer('like');
             $table->integer('price');

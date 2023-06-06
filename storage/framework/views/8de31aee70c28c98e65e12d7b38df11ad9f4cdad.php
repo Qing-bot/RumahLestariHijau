@@ -325,23 +325,45 @@
         <ul style="list-style: none; width: 60%">
             <table style="width: 100%" cellpadding="10">
                 <tr style="font-size: 150%">
-                    <th>Nearby Place</th>
+                    <th class="NearbyPlace">Nearby Place</th>
                     <th></th>
-                    <th class="untukBorderHomeStayDetail">Popular in the Area</th>
+                    <th class="PopularPlace">Popular in the Area</th>
                     <th></th>
                 </tr>
-                <?php if(!$data->nearby_place->isEmpty()): ?>
-                <?php $__currentLoopData = $data->nearby_place; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $np): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                    <td><?php echo e($np->name); ?></td>
-                    <td style="color: gray"><?php echo e($np->distance); ?> Km</td>
-                    <td class="untukBorderHomeStayDetail"><?php echo e($np->name); ?></td>
-                    <td style="color: gray"><?php echo e($np->distance); ?> Km</td>
-                </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                <?php else: ?>
-                
-                <?php endif; ?>
+
+                <?php
+                $np_count = $data->nearby_place->count();
+                $pp_count = $data->popular_place->count();
+                $count = max($np_count, $pp_count);
+
+                $tnp = $data->nearby_place->sortBy('distance')->toArray();
+                $snp_name = array_column($tnp, 'name');
+                $snp_distance = array_column($tnp, 'distance');
+
+                $tpp = $data->popular_place->sortBy('distance')->toArray();
+                $spp_name = array_column($tpp, 'name');
+                $spp_distance = array_column($tpp, 'distance');
+                ?>
+
+                <?php for($i = 0; $i < $count; $i++): ?>
+                    <tr>
+                    <?php if( $i < $np_count ): ?>
+                        <td><?php echo e($snp_name[$i]); ?></td>
+                        <td style="color: gray"><?php echo e($snp_distance[$i]); ?> Km</td>
+                    <?php else: ?>
+                        <td></td>
+                        <td></td>
+                    <?php endif; ?>
+
+                    <?php if( $i < $pp_count ): ?>
+                        <td><?php echo e($spp_name[$i]); ?></td>
+                        <td style="color: gray"><?php echo e($spp_distance[$i]); ?> Km</td>
+                    <?php else: ?>
+                        <td></td>
+                        <td></td>
+                    <?php endif; ?>
+                    </tr>
+                <?php endfor; ?>          
             </table>
         </ul>
 

@@ -323,23 +323,45 @@
         <ul style="list-style: none; width: 60%">
             <table style="width: 100%" cellpadding="10">
                 <tr style="font-size: 150%">
-                    <th>Nearby Place</th>
+                    <th class="NearbyPlace">Nearby Place</th>
                     <th></th>
-                    <th class="untukBorderHomeStayDetail">Popular in the Area</th>
+                    <th class="PopularPlace">Popular in the Area</th>
                     <th></th>
                 </tr>
-                @if(!$data->nearby_place->isEmpty())
-                @foreach ($data->nearby_place as $np)
-                <tr>
-                    <td>{{$np->name}}</td>
-                    <td style="color: gray">{{$np->distance}} Km</td>
-                    <td class="untukBorderHomeStayDetail">{{$np->name}}</td>
-                    <td style="color: gray">{{$np->distance}} Km</td>
-                </tr>
-                @endforeach
-                @else
-                {{-- <p>kosong</p> --}}
-                @endif
+
+                @php
+                $np_count = $data->nearby_place->count();
+                $pp_count = $data->popular_place->count();
+                $count = max($np_count, $pp_count);
+
+                $tnp = $data->nearby_place->sortBy('distance')->toArray();
+                $snp_name = array_column($tnp, 'name');
+                $snp_distance = array_column($tnp, 'distance');
+
+                $tpp = $data->popular_place->sortBy('distance')->toArray();
+                $spp_name = array_column($tpp, 'name');
+                $spp_distance = array_column($tpp, 'distance');
+                @endphp
+
+                @for ($i = 0; $i < $count; $i++)
+                    <tr>
+                    @if( $i < $np_count )
+                        <td>{{ $snp_name[$i] }}</td>
+                        <td style="color: gray">{{ $snp_distance[$i] }} Km</td>
+                    @else
+                        <td></td>
+                        <td></td>
+                    @endif
+
+                    @if( $i < $pp_count )
+                        <td>{{ $spp_name[$i] }}</td>
+                        <td style="color: gray">{{ $spp_distance[$i] }} Km</td>
+                    @else
+                        <td></td>
+                        <td></td>
+                    @endif
+                    </tr>
+                @endfor          
             </table>
         </ul>
 
