@@ -80,26 +80,15 @@
         <div id="Price" style="display:none">
             <table>
                 <tr>
-                    <th>Jumlah Peserta Tour</th>
-                    <th>Harga/pax</th>
+                    <td>Jumlah Peserta Tour</td>
+                    <td>Harga/pax</td>
                 </tr>
+                <?php $__currentLoopData = $des->destination_price; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                    <td>1-4</td>
-                    <td>Rp. <?php echo e($des->price1); ?></td>
+                    <td><?php echo e($data->min_person); ?>-<?php echo e($data->max_person); ?></td>
+                    <td>Rp. <?php echo e($data->price); ?></td>
                 </tr>
-                <tr>
-                    <td>5-9</td>
-                    <td>Rp. <?php echo e($des->price2); ?></td>
-                </tr>
-                <tr>
-                    <td>10-14</td>
-                    <td>Rp. <?php echo e($des->price3); ?></td>
-                </tr>
-                <tr>
-                    <td>14++</td>
-                    <td>Rp. <?php echo e($des->price4); ?></td>
-                </tr>
-
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </table>
         </div>
     </div>

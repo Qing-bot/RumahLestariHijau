@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('destinations', function (Blueprint $table) {
+        Schema::create('popular_places', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('homestay_id');
             $table->string('name');
-            $table->text('description');
-            $table->text('rundown');
-            $table->string('maps');
-            $table->string('photo');
+            $table->float('distance');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('destinations');
+        Schema::dropIfExists('popular_places');
     }
 };

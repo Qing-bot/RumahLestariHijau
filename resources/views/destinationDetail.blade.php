@@ -79,26 +79,15 @@
         <div id="Price" style="display:none">
             <table>
                 <tr>
-                    <th>Jumlah Peserta Tour</th>
-                    <th>Harga/pax</th>
+                    <td>Jumlah Peserta Tour</td>
+                    <td>Harga/pax</td>
                 </tr>
+                @foreach ($des->destination_price as $data)
                 <tr>
-                    <td>1-4</td>
-                    <td>Rp. {{$des->price1}}</td>
+                    <td>{{$data->min_person}}-{{$data->max_person}}</td>
+                    <td>Rp. {{$data->price}}</td>
                 </tr>
-                <tr>
-                    <td>5-9</td>
-                    <td>Rp. {{$des->price2}}</td>
-                </tr>
-                <tr>
-                    <td>10-14</td>
-                    <td>Rp. {{$des->price3}}</td>
-                </tr>
-                <tr>
-                    <td>14++</td>
-                    <td>Rp. {{$des->price4}}</td>
-                </tr>
-
+                @endforeach
             </table>
         </div>
     </div>

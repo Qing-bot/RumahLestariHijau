@@ -508,6 +508,7 @@ class RegisterController extends Controller {
             'name' => 'required',
             'description' => 'required',
             'like' => 'required',
+            'price' => 'required',
             'image' => 'required|image',
         ]);
 
@@ -527,16 +528,8 @@ class RegisterController extends Controller {
             $temp = $this->getName($data->name, 10);
             $cul_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
             Storage::putFileAs('culinary_img/', $file, $cul_path);
-            //dd($cul_path);
-
             $cul_path = 'culinary_img/'.$cul_path;
         }
-        $pho = new Photo();
-        $pho->category_id = 1;
-        $pho->path = $cul_path;
-        $pho->table_id = $data->id;
-        $pho->save();
-
         return redirect('/tableCulinary');
     }
     public function editCulinary(Request $request, $id){

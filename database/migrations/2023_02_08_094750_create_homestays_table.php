@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('homestays', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('thumbnail');
             $table->string('location');
             $table->string('host');
             $table->text('maps');

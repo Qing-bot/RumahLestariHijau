@@ -11,8 +11,11 @@ class Homestay extends Model
     public function nearby_place(){
         return $this->hasMany(NearbyPlace::class, "homestay_id", "id");
     }
-    public function photo(){
-        return $this->hasMany(Photo::class, "table_id", "id")->where("category_id", '=', 2);
+    public function popular_place(){
+        return $this->hasMany(PopularPlace::class, "homestay_id", "id");
+    }
+    public function homestay_photo(){
+        return $this->hasMany(HomestayPhoto::class, "homestay_id", "id");
     }
     public function comment_list(){
         return $this->hasMany(CommentList::class, "table_id", "id");

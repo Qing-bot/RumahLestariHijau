@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,21 +18,73 @@ class DestinationSeeder extends Seeder
     {
         DB::table('destinations')->insert([
             [
-                'id'=> 1,
-                'name' => "Outbond Pantai Kuta Bali",
-                'description' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus pariatur dolorem impedit aut inventore sequi quas, alias commodi suscipit, nulla est. Doloribus vel quisquam molestias reiciendis, alias fuga quod.",
-                'rundown' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus pariatur dolorem impedit aut inventore sequi quas, alias commodi suscipit, nulla est. Doloribus vel quisquam molestias reiciendis, alias fuga quod.
-
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus pariatur dolorem impedit aut inventore sequi quas, alias commodi suscipit, nulla est. Doloribus vel quisquam molestias reiciendis, alias fuga quod.",
+                'id' => 1,
+                'name' => "Outbond Bali",
+                'description' => "Outbond di Bali",
+                'rundown' => "1. Berkumpul 2. Berenang",
                 'maps' => "Jl. Pantai Kuta, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
-                'photo' => "assets/img/des1.png",
-                'price1' => 10000,
-                'price2' => 20000,
-                'price3' => 30000,
-                'price4' => 40000,
+                'photo' => "destination_img/OutbondBal_seeder.jpg",
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
+            [
+                'id' => 2,
+                'name' => "Outbond Pantai Kuta Bali",
+                'description' => "Outbond di Pantai Kuta",
+                'rundown' => "1. Berkumpul 2. Berenang sendiri",
+                'maps' => "Jl. Pantai Kuta, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
+                'photo' => "destination_img/OutbondPan_seeder.jpg",
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+        ]);
 
-
+        DB::table('destination_prices')->insert([
+            [
+                'id' => 1,
+                'destination_id'=> 1,
+                'min_person' => 1,
+                'max_person' => 2,
+                'price' => 50000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 2,
+                'destination_id'=> 1,
+                'min_person' => 3,
+                'max_person' => 4,
+                'price' => 60000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 3,
+                'destination_id'=> 2,
+                'min_person' => 1,
+                'max_person' => 2,
+                'price' => 50000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 4,
+                'destination_id'=> 2,
+                'min_person' => 3,
+                'max_person' => 4,
+                'price' => 70000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 5,
+                'destination_id'=> 2,
+                'min_person' => 5,
+                'max_person' => 6,
+                'price' => 80000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
         ]);
     }
 }

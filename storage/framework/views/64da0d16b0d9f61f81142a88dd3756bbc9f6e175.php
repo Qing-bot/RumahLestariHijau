@@ -218,7 +218,7 @@
                 Explore a Different Way Culinary Experience
             </h4>
             <div style="text-align:center; width: 50vh;">
-                <img src="<?php echo e(Storage::url($cul->photo[0]->path)); ?>" style="width: 100%">
+                <img src="<?php echo e(Storage::url($cul->photo)); ?>" style="width: 100%">
                 <a href="/culinary"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 5%; padding-right: 5%; translate: 125% -150%">See More</button></a>
             </div>
             <p style="white-space: pre-line;" style="font-weight: bold">
