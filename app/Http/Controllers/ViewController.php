@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Culinary;
 use App\Models\Destination;
 use App\Models\Homestay;
+use App\Models\HomestayPhoto;
 use App\Models\NearbyPlace;
 use App\Models\Photo;
+use App\Models\PopularPlace;
 use App\Models\Promo;
 use App\Models\Souvenir;
 use Illuminate\Http\Request;
@@ -53,6 +55,7 @@ class ViewController extends Controller
         }
         return view('homestay', compact('hs'));
     }
+
     public function indexCulinary(){
         $data = Culinary::all();
         return view('culinary', ['culi'=>$data]);
@@ -88,9 +91,11 @@ class ViewController extends Controller
     }
     public function indexAdminEditHomestay($id){
         $data = Homestay::find($id);
-        $np = NearbyPlace::where('homestay_id', $id)->get();
+        $pho = HomestayPhoto::where('homestay_id', $id)->orderBy('index','asc')->get();
+        $np = NearbyPlace::where('homestay_id', $id);
+        $pp = PopularPlace::where('homestay_id', $id);
 
-        return view('admin.editHomestay', ['data' => $data, 'np' => $np]);
+        return view('admin.editHomestay', ['data' => $data, 'pho'=> $pho, 'np' => $np, 'pp' => $pp]);
     }
 
     public function indexAdminCulinary(){

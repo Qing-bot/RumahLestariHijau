@@ -47,7 +47,7 @@
     <div class="form-group">
         <label for="address">Homestay Address</label>
         <input id="address" type="text" class="form-control" name='address' placeholder="Jl. Anggrek No. 71"
-            value="{{$data->maps}}">
+            value="{{$data->address}}">
         @error('address')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -103,22 +103,21 @@
         @enderror
     </div>
 
-
     @php
     $idx = 0;
     @endphp
 
-    @foreach ($np as $place)
+    @foreach ($np as $nearbyplace)
 
     <strong>Nearby Place {{$loop->index+1}}</strong><br>
     <div class="form-group">
-        <label for="place{{$loop->index+1}}">Place name</label>
+        <label for="nearbyplace{{$loop->index+1}}">Place name</label>
         @empty($np)
-        <input id="place{{$loop->index+1}}" type="text" class="form-control" name='place{{$loop->index+1}}'
-            placeholder="Place {{$loop->index+1}}">
+        <input id="nearbyplace{{$loop->index+1}}" type="text" class="form-control" name='nearbyplace{{$loop->index+1}}'
+            placeholder="Nearby Place {{$loop->index+1}}">
         @else
-        <input id="place{{$loop->index+1}}" type="text" class="form-control" name='place{{$loop->index+1}}'
-            placeholder="Place {{$loop->index+1}}" value="{{$np[$loop->index]->name}}">
+        <input id="nearbyplace{{$loop->index+1}}" type="text" class="form-control" name='nearbyplace{{$loop->index+1}}'
+            placeholder="Nearby Place {{$loop->index+1}}" value="{{$np[$loop->index]->name}}">
         @endempty
 
         @error('place{{$loop->index+1}}')
@@ -127,34 +126,30 @@
     </div>
 
     <div class="form-group">
-        <label for="distance{{$loop->index+1}}">Place Distance (km)</label>
+        <label for="nearbydistance{{$loop->index+1}}">Place Distance (km)</label>
         @empty($np)
-        <input id="distance{{$loop->index+1}}" type="text" class="form-control" name='distance{{$loop->index+1}}'
+        <input id="nearbydistance{{$loop->index+1}}" type="text" class="form-control" name='nearbydistance{{$loop->index+1}}'
             placeholder="3">
         @else
-        <input id="distance{{$loop->index+1}}" type="text" class="form-control" name='distance{{$loop->index+1}}'
+        <input id="nearbydistance{{$loop->index+1}}" type="text" class="form-control" name='nearbydistance{{$loop->index+1}}'
             placeholder="3" value="{{$np[$loop->index]->distance}}">
         @endempty
-        @error('distance{{$loop->index+1}}')
+        @error('nearbydistance{{$loop->index+1}}')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
+
     @php
     $idx+=1;
     @endphp
     @endforeach
 
-    {{-- @php
-            $idx+=1;
-        @endphp --}}
-
-
     @for ($idx; $idx<4; $idx++)
         <strong>Nearby Place {{$idx+1}}</strong><br>
         <div class="form-group">
-            <label for="place{{$idx+1}}">Place name</label>
+            <label for="nearbyplace{{$idx+1}}">Place name</label>
 
-            <input id="place{{$idx+1}}" type="text" class="form-control" name='place{{$idx+1}}'
+            <input id="nearbyplace{{$idx+1}}" type="text" class="form-control" name='nearbyplace{{$idx+1}}'
                 placeholder="Place {{$idx+1}}">
 
             @error('place{{$idx+1}}')
@@ -162,13 +157,73 @@
             @enderror
         </div>
 
-        <label for="distance{{$idx+1}}">Place Distance (km)</label>
-        <input id="distance{{$idx+1}}" type="text" class="form-control" name='distance{{$idx+1}}' placeholder="3">
-        @error('distance{{$idx+1}}')
+        <label for="nearbydistance{{$idx+1}}">Place Distance (km)</label>
+        <input id="nearbydistance{{$idx+1}}" type="text" class="form-control" name='nearbydistance{{$idx+1}}' placeholder="3">
+        @error('nearbydistance{{$idx+1}}')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     @endfor
 
+    @php
+    $idx = 0;
+    @endphp
+
+    @foreach ($pp as $popularplace)
+
+    <strong>Popular Place {{$loop->index+1}}</strong><br>
+    <div class="form-group">
+        <label for="popularplace{{$loop->index+1}}">Place name</label>
+        @empty($pp)
+        <input id="popularplace{{$loop->index+1}}" type="text" class="form-control" name='popularplace{{$loop->index+1}}'
+            placeholder="Popular Place {{$loop->index+1}}">
+        @else
+        <input id="popularplace{{$loop->index+1}}" type="text" class="form-control" name='popularplace{{$loop->index+1}}'
+            placeholder="Popular Place {{$loop->index+1}}" value="{{$pp[$loop->index]->name}}">
+        @endempty
+
+        @error('place{{$loop->index+1}}')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <label for="populardistance{{$loop->index+1}}">Place Distance (km)</label>
+        @empty($pp)
+        <input id="populardistance{{$loop->index+1}}" type="text" class="form-control" name='populardistance{{$loop->index+1}}'
+            placeholder="3">
+        @else
+        <input id="populardistance{{$loop->index+1}}" type="text" class="form-control" name='populardistance{{$loop->index+1}}'
+            placeholder="3" value="{{$pp[$loop->index]->distance}}">
+        @endempty
+        @error('distance{{$loop->index+1}}')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+    @php
+    $idx += 1;
+    @endphp
+    @endforeach
+
+    @for ($idx; $idx<4; $idx++)
+        <strong>Popular Place {{$idx+1}}</strong><br>
+        <div class="form-group">
+            <label for="popularplace{{$idx+1}}">Place name</label>
+
+            <input id="popularplace{{$idx+1}}" type="text" class="form-control" name='popularplace{{$idx+1}}'
+                placeholder="Popular Place {{$idx+1}}">
+
+            @error('popularplace{{$idx+1}}')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <label for="populardistance{{$idx+1}}">Place Distance (km)</label>
+        <input id="populardistance{{$idx+1}}" type="text" class="form-control" name='populardistance{{$idx+1}}' placeholder="3">
+        @error('populardistance{{$idx+1}}')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    @endfor
 
     @php
     $idx=0;

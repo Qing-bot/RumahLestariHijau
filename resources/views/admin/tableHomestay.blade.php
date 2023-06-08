@@ -106,13 +106,9 @@
                 </td>
                 <td>Rp. {{$data->price}}</td>
                 <td>
-                    <img src="{{Storage::url($data->thumbnail)}}" width="100px">
-
-                    @foreach ($data->photo as $pho)
+                    @foreach ($data->homestay_photo as $pho)
                     <img src="{{Storage::url($pho->path)}}" width="100px">
                     @endforeach
-                    {{-- <img src="{{Storage::url($data->thumbnail)}}" width="100px"> --}}
-
                 </td>
 
                 <td>

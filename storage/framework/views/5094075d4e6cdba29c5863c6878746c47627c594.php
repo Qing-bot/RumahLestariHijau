@@ -36,7 +36,7 @@
             style="margin-left: auto; margin-right: auto; width: 50%; display: block; border-radius: 10px; margin-bottom: 5%">
         <div style="text-align: center; font-weight: bold; color: green; margin-bottom: 3%"><?php echo e($data->name); ?></div>
         <div style="text-align: justify; margin-bottom: 4%"><?php echo e($data->description); ?></div>
-        <div style="text-align: center; color: green; font-weight: bold; float: center">Rp. <?php echo e($data->price); ?>,00</div>
+        <div style="text-align: center; color: green; font-weight: bold; float: center">Rp. <?php echo e($data->price); ?></div>
         <!-- <button class="buyNowSouvenir">Buy Now</button> -->
         <a href="https://api.whatsapp.com/send?phone=6285155488011&text=Saya%20Ingin%20Membeli%20Souvenir%20<?php echo e($data->name); ?>"
             class="buyNowSouvenir">Buy
