@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('nearby_places', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('homestay_id');
+            $table->foreignId('homestay_id')->constrained()->OnDelete('cascade');
             $table->string('name');
             $table->float('distance');
             $table->timestamps();

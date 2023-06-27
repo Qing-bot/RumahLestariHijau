@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('homestay_photos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('homestay_id');
+            $table->foreignId('homestay_id')->constrained()->cascadeOnDelete();
             $table->integer('index');
             $table->string('path');
             $table->timestamps();
