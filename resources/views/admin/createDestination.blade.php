@@ -48,6 +48,14 @@
     </div>
 
     <div class="form-group">
+        <label for="address">Price Destination</label>
+        <input id="price" type="number" class="form-control" name='price' placeholder="100000">
+        @error('price')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
         <label for="image">Image Destination</label>
         <input id="image" type="file" class="form-control" name='image'  accept=".png,.jpg,.jpeg">
         @error('image')
@@ -55,37 +63,33 @@
         @enderror
     </div>
 
+    <!--
     <div class="form-group">
-        <label for="price1">Price Destination (1-4 Pax)</label>
-        <input id="price1" type="number" class="form-control" name='price1' placeholder="100000">
-        @error('price1')
+        <label for="personnew"> Add new Price Destination for </label>
+            
+        <div id="parent" style="display: flex;">
+            <div id="left" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 10; border: 1px;">
+                <input id="minpnew" type="number" class="form-control" name='minpnew' 
+                style='width:10em' placeholder="2">
+            </div>
+            -
+            <div id="right" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 1; border: 1px;">
+                <input id="maxpnew" type="number" class="form-control" name='maxpnew' 
+                style='width:10em' placeholder="3">
+            </div>
+            Pax
+        </div>
+         
+        <input id="pricenew" type="number" class="form-control" name='pricenew' 
+            placeholder="100000">
+        @error('pricenew')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-    <div class="form-group">
-        <label for="price2">Price Destination (5-9 Pax)</label>
-        <input id="price2" type="number" class="form-control" name='price2' placeholder="100000">
-        @error('price2')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="price3">Price Destination (10-14 Pax)</label>
-        <input id="price3" type="number" class="form-control" name='price3' placeholder="100000">
-        @error('price3')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="price4">Price Destination (15 Pax++)</label>
-        <input id="price4" type="number" class="form-control" name='price4' placeholder="100000">
-        @error('price4')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-
+    -->
     <button type="submit" class="btn btn-primary">{{ __('Add Destination') }}</button>
     @endif
+    
 </form>
 
 

@@ -103,15 +103,11 @@
         @enderror
     </div>
 
-    @php
-    $idx = 0;
-    @endphp
-
     @foreach ($np as $nearbyplace)
-
     <strong>Nearby Place {{$loop->index+1}}</strong><br>
     <div class="form-group">
         <label for="nearbyplace{{$loop->index+1}}">Place name</label>
+
         @empty($np)
         <input id="nearbyplace{{$loop->index+1}}" type="text" class="form-control" name='nearbyplace{{$loop->index+1}}'
             placeholder="Nearby Place {{$loop->index+1}}">
@@ -120,7 +116,7 @@
             placeholder="Nearby Place {{$loop->index+1}}" value="{{$np[$loop->index]->name}}">
         @endempty
 
-        @error('place{{$loop->index+1}}')
+        @error('nearbyplace{{$loop->index+1}}')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
@@ -134,42 +130,14 @@
         <input id="nearbydistance{{$loop->index+1}}" type="text" class="form-control" name='nearbydistance{{$loop->index+1}}'
             placeholder="3" value="{{$np[$loop->index]->distance}}">
         @endempty
+
         @error('nearbydistance{{$loop->index+1}}')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-
-    @php
-    $idx+=1;
-    @endphp
     @endforeach
 
-    @for ($idx; $idx<4; $idx++)
-        <strong>Nearby Place {{$idx+1}}</strong><br>
-        <div class="form-group">
-            <label for="nearbyplace{{$idx+1}}">Place name</label>
-
-            <input id="nearbyplace{{$idx+1}}" type="text" class="form-control" name='nearbyplace{{$idx+1}}'
-                placeholder="Place {{$idx+1}}">
-
-            @error('place{{$idx+1}}')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <label for="nearbydistance{{$idx+1}}">Place Distance (km)</label>
-        <input id="nearbydistance{{$idx+1}}" type="text" class="form-control" name='nearbydistance{{$idx+1}}' placeholder="3">
-        @error('nearbydistance{{$idx+1}}')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    @endfor
-
-    @php
-    $idx = 0;
-    @endphp
-
     @foreach ($pp as $popularplace)
-
     <strong>Popular Place {{$loop->index+1}}</strong><br>
     <div class="form-group">
         <label for="popularplace{{$loop->index+1}}">Place name</label>
@@ -199,35 +167,7 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-
-    @php
-    $idx += 1;
-    @endphp
     @endforeach
-
-    @for ($idx; $idx<4; $idx++)
-        <strong>Popular Place {{$idx+1}}</strong><br>
-        <div class="form-group">
-            <label for="popularplace{{$idx+1}}">Place name</label>
-
-            <input id="popularplace{{$idx+1}}" type="text" class="form-control" name='popularplace{{$idx+1}}'
-                placeholder="Popular Place {{$idx+1}}">
-
-            @error('popularplace{{$idx+1}}')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <label for="populardistance{{$idx+1}}">Place Distance (km)</label>
-        <input id="populardistance{{$idx+1}}" type="text" class="form-control" name='populardistance{{$idx+1}}' placeholder="3">
-        @error('populardistance{{$idx+1}}')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    @endfor
-
-    @php
-    $idx=0;
-    @endphp
 
     <div class="form-group">
         <p>Resource</p>

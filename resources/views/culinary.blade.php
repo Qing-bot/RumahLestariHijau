@@ -27,7 +27,7 @@
             </p>
 
             <div style="width: 100%; margin-top: 0px; display: flex">
-                <input type="radio" class="form-control" id="price" placeholder="min" style="width: 15px;"
+                <input type="radio" name="sort_by" class="form-control" id="1" placeholder="min" style="width: 15px;"
                     name="sort_by" value="1">
                 <p style="margin-top: 6px; margin-left: 10px">
                     Lower Price
@@ -35,7 +35,7 @@
             </div>
 
             <div style="width: 100%; margin-top: 0px; display: flex">
-                <input type="radio" class="form-control" id="price" placeholder="min" style="width: 15px;"
+                <input type="radio" name="sort_by" class="form-control" id="2" placeholder="min" style="width: 15px;"
                     name="sort_by" value="2">
                 <p style="margin-top: 6px; margin-left: 10px">
                     High Price
@@ -44,7 +44,7 @@
 
 
             <div style="width: 100%; margin-top: 0px; display: flex">
-                <input type="radio" class="form-control" id="like" placeholder="min" style="width: 15px;"
+                <input type="radio" name="sort_by" class="form-control" id="3" placeholder="min" style="width: 15px;"
                     name="sort_by" value="3">
                 <p style="margin-top: 6px; margin-left: 10px">
                     Most Like
@@ -74,7 +74,7 @@
             </h3>
 
             <br> <br> <br>
-            <img src="gambar/cul.svg" width="90%" style="border-radius: 30px;">
+            <img src="/gambar/cul.svg" width="86%" style="border-radius: 30px;">
 
             <br> <br>
 
@@ -82,7 +82,7 @@
                 @foreach ($culi as $data)
                 <div style="width: 30%; margin: 1%; display:inline-block">
                     
-                    <td><img src="{{Storage::url($data->photo)}}" alt="" width="100px"></td>
+                    <td><img src="{{Storage::url($data->photo)}}" alt="" height="225px" width="275px"></td>
                     <p style="font-weight: bold">{{$data->name}}</p>
                     <button class="openbtnCulinary" onclick="openForm({{$data->id}})">More</button>
                 </div>
@@ -153,6 +153,12 @@
         document.getElementById(namess).style.display = "none";
     }
 
+    $('input[type=radio][name=sort_by]').on('click', function(){
+        var url = "{{ url('/culinary') }}";
+        var sort_by = $('input[type=radio][name=sort_by]:checked').val();
+        window.location.href = url + "/sort_by=" + sort_by;
+    });
+
     function dynamicSort(property, sorting) {
         var sortOrder = 1;
         if (property[0] === "-") {
@@ -174,7 +180,7 @@
     }
 
     $(document).ready(function(){
-        $('input[type=radio][name=sort_by]').on('click', function(){
+        $('input[type=radio][name=xsort_by]').on('click', function(){
             var tes = $(this).val();
             var params = this.id;
             $.ajax({

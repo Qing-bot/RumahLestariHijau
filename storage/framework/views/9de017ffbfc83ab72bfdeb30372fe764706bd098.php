@@ -62,8 +62,23 @@ unset($__errorArgs, $__bag); ?>
 
     <div class="form-group">
         <label for="address">Address Destination</label>
-        <input class="form-control" name="address" value="<?php echo e($data->maps); ?>" id="address" placeholder="Jl. Anggrek No. 21">
+        <input class="form-control" name="address" value="<?php echo e($data->address); ?>" id="address" placeholder="Jl. Anggrek No. 21">
         <?php $__errorArgs = ['address'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger"><?php echo e($message); ?></div>
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+    </div>
+
+    <div class="form-group">
+        <label for="address">Price Destination</label>
+        <input id="price" type="number" class="form-control" name='price' value="<?php echo e($data->price); ?>" placeholder="100000">
+        <?php $__errorArgs = ['price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -90,10 +105,28 @@ endif;
 unset($__errorArgs, $__bag); ?>
     </div>
 
+    <!--
+    <?php $__currentLoopData = $price; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="form-group">
-        <label for="price1">Price Destination (1-4 Pax)</label>
-        <input id="price1" type="number" class="form-control" name='price1' placeholder="100000" value="<?php echo e($data->price1); ?>">
-        <?php $__errorArgs = ['price1'];
+        <label for="person<?php echo e($loop->index+1); ?>"> Price Destination for </label>
+            
+        <div id="parent" style="display: flex;">
+            <div id="left" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 10; border: 1px;">
+                <input id="minp<?php echo e($loop->index+1); ?>" type="number" class="form-control" name='minp<?php echo e($loop->index+1); ?>' 
+                style='width:10em' placeholder="100000" value="<?php echo e($price[$loop->index]->min_person); ?>">
+            </div>
+            -
+            <div id="right" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 1; border: 1px;">
+                <input id="maxp<?php echo e($loop->index+1); ?>" type="number" class="form-control" name='maxp<?php echo e($loop->index+1); ?>' 
+                style='width:10em' placeholder="100000" value="<?php echo e($price[$loop->index]->max_person); ?>">
+            </div>
+            Pax
+        </div>
+         
+        <input id="price<?php echo e($loop->index+1); ?>" type="number" class="form-control" name='price<?php echo e($loop->index+1); ?>' 
+            placeholder="100000" value="<?php echo e($price[$loop->index]->price); ?>">
+        
+        <?php $__errorArgs = ['price<?php echo e($loop->index+1); ?>'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -104,48 +137,25 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
     </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
     <div class="form-group">
-        <label for="price2">Price Destination (5-9 Pax)</label>
-        <input id="price2" type="number" class="form-control" name='price2' value="<?php echo e($data->price2); ?>" placeholder="100000">
-        <?php $__errorArgs = ['price2'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-        <div class="alert alert-danger"><?php echo e($message); ?></div>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+        <label for="personnew"> Left if empty if dont want. Add new Price Destination for </label>
+            
+        <div id="parent" style="display: flex;">
+            <div id="left" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 10; border: 1px;">
+                <input id="minpnew" type="number" class="form-control" name='minpnew' 
+                style='width:10em' placeholder="2">
+            </div>
+            -
+            <div id="right" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 1; border: 1px;">
+                <input id="maxpnew" type="number" class="form-control" name='maxpnew' 
+                style='width:10em' placeholder="3">
+            </div>
+            Pax
+        </div>
     </div>
-    <div class="form-group">
-        <label for="price3">Price Destination (10-14 Pax)</label>
-        <input id="price3" type="number" class="form-control" name='price3' placeholder="100000" value="<?php echo e($data->price3); ?>">
-        <?php $__errorArgs = ['price3'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-        <div class="alert alert-danger"><?php echo e($message); ?></div>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-    </div>
-    <div class="form-group">
-        <label for="price4">Price Destination (15 Pax++)</label>
-        <input id="price4" type="number" class="form-control" name='price4' placeholder="100000" value="<?php echo e($data->price4); ?>">
-        <?php $__errorArgs = ['price4'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-        <div class="alert alert-danger"><?php echo e($message); ?></div>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-    </div>
+    -->
 
     <button type="submit" class="btn btn-primary"><?php echo e(__('Edit Destination')); ?></button>
     <?php endif; ?>

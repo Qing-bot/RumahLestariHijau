@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->text('rundown');
-            $table->string('maps');
+            $table->string('address');
             $table->string('photo');
+            $table->integer('price');
             $table->timestamps();
         });
     }

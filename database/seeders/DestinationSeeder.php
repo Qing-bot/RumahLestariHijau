@@ -22,7 +22,7 @@ class DestinationSeeder extends Seeder
                 'name' => "Outbond Bali",
                 'description' => "Outbond di Bali",
                 'rundown' => "1. Berkumpul 2. Berenang",
-                'maps' => "Jl. Pantai Kuta, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
+                'address' => "Jl. Pantai Kuta, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
                 'photo' => "destination_img/OutbondBal_seeder.jpg",
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -32,7 +32,7 @@ class DestinationSeeder extends Seeder
                 'name' => "Outbond Pantai Kuta Bali",
                 'description' => "Outbond di Pantai Kuta",
                 'rundown' => "1. Berkumpul 2. Berenang sendiri",
-                'maps' => "Jl. Pantai Kuta, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
+                'address' => "Jl. Pantai Kuta, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
                 'photo' => "destination_img/OutbondPan_seeder.jpg",
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

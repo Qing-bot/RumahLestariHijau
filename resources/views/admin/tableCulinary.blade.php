@@ -83,9 +83,7 @@
                 <td>{{$data->description}}</td>
                 <td>{{$data->price}}</td>
                 <td>{{$data->like/1000}}K</td>
-                {{-- <td><img src="{{ asset($data->photo[0]->path) }}" alt="" width="100px"></td> --}}
-                <td><img src="{{Storage::url($data->photo[0]->path)}}" alt="" width="100px"></td>
-                {{-- <td>{{$data->photo[0]->path}}</td> --}}
+                <td><img src="{{Storage::url($data->photo)}}" alt="" height="80px" width="100px"></td>
                 <td>
                     <a href="/editCulinary/{{$data->id}}" class="btn btn-secondary"> Edit</a>
                     <!-- <button type="submit" class="btn btn-primary"></button> -->

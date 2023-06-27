@@ -77,7 +77,7 @@
             <tr>
                 <td>{{$loop->index+1}}</td>
                 <td>{{$data->name}}</td>
-                <td><img src="{{Storage::url($data->photo)}}" alt="" width="100px"></td>
+                <td><img src="{{Storage::url($data->photo)}}" alt="" height="80px" width="100px"></td>
                 {{-- <td>{{$data->photo[0]->path}}</td> --}}
                 <td>
                     <a href="/editPromo/{{$data->id}}" class="btn btn-secondary"> Edit</a>

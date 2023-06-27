@@ -179,15 +179,11 @@ endif;
 unset($__errorArgs, $__bag); ?>
     </div>
 
-    <?php
-    $idx = 0;
-    ?>
-
     <?php $__currentLoopData = $np; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nearbyplace): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
     <strong>Nearby Place <?php echo e($loop->index+1); ?></strong><br>
     <div class="form-group">
         <label for="nearbyplace<?php echo e($loop->index+1); ?>">Place name</label>
+
         <?php if(empty($np)): ?>
         <input id="nearbyplace<?php echo e($loop->index+1); ?>" type="text" class="form-control" name='nearbyplace<?php echo e($loop->index+1); ?>'
             placeholder="Nearby Place <?php echo e($loop->index+1); ?>">
@@ -196,7 +192,7 @@ unset($__errorArgs, $__bag); ?>
             placeholder="Nearby Place <?php echo e($loop->index+1); ?>" value="<?php echo e($np[$loop->index]->name); ?>">
         <?php endif; ?>
 
-        <?php $__errorArgs = ['place<?php echo e($loop->index+1); ?>'];
+        <?php $__errorArgs = ['nearbyplace<?php echo e($loop->index+1); ?>'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -217,6 +213,7 @@ unset($__errorArgs, $__bag); ?>
         <input id="nearbydistance<?php echo e($loop->index+1); ?>" type="text" class="form-control" name='nearbydistance<?php echo e($loop->index+1); ?>'
             placeholder="3" value="<?php echo e($np[$loop->index]->distance); ?>">
         <?php endif; ?>
+
         <?php $__errorArgs = ['nearbydistance<?php echo e($loop->index+1); ?>'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -228,52 +225,9 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
     </div>
-
-    <?php
-    $idx+=1;
-    ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-    <?php for($idx; $idx<4; $idx++): ?>
-        <strong>Nearby Place <?php echo e($idx+1); ?></strong><br>
-        <div class="form-group">
-            <label for="nearbyplace<?php echo e($idx+1); ?>">Place name</label>
-
-            <input id="nearbyplace<?php echo e($idx+1); ?>" type="text" class="form-control" name='nearbyplace<?php echo e($idx+1); ?>'
-                placeholder="Place <?php echo e($idx+1); ?>">
-
-            <?php $__errorArgs = ['place<?php echo e($idx+1); ?>'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-            <div class="alert alert-danger"><?php echo e($message); ?></div>
-            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-        </div>
-
-        <label for="nearbydistance<?php echo e($idx+1); ?>">Place Distance (km)</label>
-        <input id="nearbydistance<?php echo e($idx+1); ?>" type="text" class="form-control" name='nearbydistance<?php echo e($idx+1); ?>' placeholder="3">
-        <?php $__errorArgs = ['nearbydistance<?php echo e($idx+1); ?>'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-            <div class="alert alert-danger"><?php echo e($message); ?></div>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-    <?php endfor; ?>
-
-    <?php
-    $idx = 0;
-    ?>
-
     <?php $__currentLoopData = $pp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $popularplace): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
     <strong>Popular Place <?php echo e($loop->index+1); ?></strong><br>
     <div class="form-group">
         <label for="popularplace<?php echo e($loop->index+1); ?>">Place name</label>
@@ -317,49 +271,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
     </div>
-
-    <?php
-    $idx += 1;
-    ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-    <?php for($idx; $idx<4; $idx++): ?>
-        <strong>Popular Place <?php echo e($idx+1); ?></strong><br>
-        <div class="form-group">
-            <label for="popularplace<?php echo e($idx+1); ?>">Place name</label>
-
-            <input id="popularplace<?php echo e($idx+1); ?>" type="text" class="form-control" name='popularplace<?php echo e($idx+1); ?>'
-                placeholder="Popular Place <?php echo e($idx+1); ?>">
-
-            <?php $__errorArgs = ['popularplace<?php echo e($idx+1); ?>'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-            <div class="alert alert-danger"><?php echo e($message); ?></div>
-            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-        </div>
-
-        <label for="populardistance<?php echo e($idx+1); ?>">Place Distance (km)</label>
-        <input id="populardistance<?php echo e($idx+1); ?>" type="text" class="form-control" name='populardistance<?php echo e($idx+1); ?>' placeholder="3">
-        <?php $__errorArgs = ['populardistance<?php echo e($idx+1); ?>'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-            <div class="alert alert-danger"><?php echo e($message); ?></div>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-    <?php endfor; ?>
-
-    <?php
-    $idx=0;
-    ?>
 
     <div class="form-group">
         <p>Resource</p>

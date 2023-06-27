@@ -1,6 +1,6 @@
 @extends('template.template')
 
-@section('title', 'Detination Detail - Rumah Hijau')
+@section('title', 'Destination Detail - Rumah Hijau')
 
 @section('content')
 
@@ -39,12 +39,13 @@
                 onclick="document.getElementById('Rundown').style.display='block'; document.getElementById('Description').style.display='none'; document.getElementById('Location').style.display='none'; document.getElementById('Price').style.display='none'">Rundown</button>
             <button class="buttonDestinationDetail"
                 onclick="document.getElementById('Location').style.display='block'; document.getElementById('Description').style.display='none'; document.getElementById('Rundown').style.display='none'; document.getElementById('Price').style.display='none'">Location</button>
-            <button class="buttonDestinationDetail"
+            <!-- <button class="buttonDestinationDetail"
                 onclick="document.getElementById('Price').style.display='block'; document.getElementById('Description').style.display='none'; document.getElementById('Location').style.display='none'; document.getElementById('Rundown').style.display='none'">Price</button>
-        </div>
+            -->
+        </div> 
         <div id="Description" style="display:none">
             <p>{{$des->description}}</p>
-
+            <p>Price : Rp. {{$des->price}} / person</p>
         </div>
         <div id="Rundown" style="display:none">
             {{$des->rundown}}
@@ -76,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div id="Price" style="display:none">
+        <!-- <div id="Price" style="display:none">
             <table>
                 <tr>
                     <td>Jumlah Peserta Tour</td>
@@ -89,7 +90,7 @@
                 </tr>
                 @endforeach
             </table>
-        </div>
+        </div> -->
     </div>
     <style>
         table {
@@ -112,7 +113,7 @@
 
     </style>
     <div style="width: 35%; display:inline-block; padding:5%; margin-top: -2%">
-        <p style="font-weight: bold; color: green">Form Reverse Destination</p>
+        <p style="font-weight: bold; color: green">Form Reserve Destination</p>
         <p style="margin-bottom: 1%">Full Name</p>
         <input type="text" id="name"
             style="width: 100%; box-shadow:1px 6px 8px gray; border: none; background-color: #C0C0C0; margin-bottom: 3%; height: 40px; font-size: 25px; border-radius: 10px">
@@ -134,7 +135,7 @@
         <!-- <a href="https://api.whatsapp.com/send?phone=628568758753&text=Ingin%20Destinasi"
             style="background: linear-gradient(to bottom, red, orange); border: none; padding: 3%; padding-left: 10%; padding-right: 10%; float: right; border-radius: 15px; margin-top: 20%; margin-bottom: 75%; color: white">Reverse
             Now</a> -->
-        <a href="#" id="reverse-button" style="background: linear-gradient(to bottom, red, orange); border: none; padding: 3%; padding-left: 10%; padding-right: 10%; float: right; border-radius: 15px; margin-top: 20%; margin-bottom: 75%; color: white">Reverse Now</a>
+        <a href="#" id="reverse-button" style="background: linear-gradient(to bottom, red, orange); border: none; padding: 3%; padding-left: 10%; padding-right: 10%; float: right; border-radius: 15px; margin-top: 20%; margin-bottom: 75%; color: white">Reserve Now</a>
     </div>
 </div>
 

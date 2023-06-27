@@ -14,7 +14,27 @@
         text-align: center;
         font-size: 200%;
     }
+
+    .row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  -ms-flex: 50%;
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}       
 </style>
+
 <!-- Kotak 1 Start -->
 <div style="margin-top: 2%; margin-bottom: 2%; padding-left: 10%; padding-right: 10%; display: flex">
     <div style="width : 100%; height: 100%; border: groove 2px; border-radius:35px">
@@ -91,7 +111,7 @@
             </p>
 
             <div style="width: 100%; margin-top: -5%; display: flex; align-items:center;">
-                <input type="radio" class="form-control" name="sort_by" id="price" placeholder="min"
+                <input type="radio" class="form-control" name="sort_by" id="1" placeholder="min"
                     style="width: 15px;" value="1">
                 <p style="margin-top: 2.2%; margin-left: 3%">
                     Lower Price
@@ -99,7 +119,7 @@
             </div>
 
             <div style="width: 100%; margin-top: -5%; display: flex; align-items:center;">
-                <input type="radio" class="form-control" name="sort_by" id="price" placeholder="min"
+                <input type="radio" class="form-control" name="sort_by" id="2" placeholder="min"
                     style="width: 15px;" value="2">
                 <p style="margin-top: 2.2%; margin-left: 3%">
                     High Price
@@ -108,8 +128,8 @@
 
 
             <div style="width: 100%; margin-top: -5%; display: flex; align-items:center;">
-                <input type="radio" class="form-control" name="sort_by" id="like" placeholder="min"
-                    style="width: 15px;" value="2">
+                <input type="radio" class="form-control" name="sort_by" id="3" placeholder="min"
+                    style="width: 15px;" value="3">
                 <p style="margin-top: 2.2%; margin-left: 3%">
                     Most Likes
                 </p>
@@ -123,7 +143,7 @@
 
             <div style="width: 100%; margin-top: -5%; display: flex; align-items:center;">
                 <input type="radio" class="form-control" name="facilities" id="1" placeholder="min"
-                    style="width: 15px;">
+                    style="width: 15px;" value="1">
                 <p style="margin-top: 2.2%; margin-left: 3%">
                     Wifi
                 </p>
@@ -131,7 +151,7 @@
 
             <div style="width: 100%; margin-top: -5%; display: flex; align-items:center;">
                 <input type="radio" class="form-control" name="facilities" id="2" placeholder="min"
-                    style="width: 15px;">
+                    style="width: 15px;" value="2">
                 <p style="margin-top: 2.2%; margin-left: 3%">
                     Parking
                 </p>
@@ -139,14 +159,14 @@
 
             <div style="width: 100%; margin-top: -5%; display: flex; align-items:center;">
                 <input type="radio" class="form-control" name="facilities" id="3" placeholder="min"
-                    style="width: 15px;">
+                    style="width: 15px;" value="3">
                 <p style="margin-top: 2.2%; margin-left: 3%">
                     AC
                 </p>
             </div>
             <div style="width: 100%; margin-top: -5%; display: flex; align-items:center;">
                 <input type="radio" class="form-control" name="facilities" id="4" placeholder="min"
-                    style="width: 15px;">
+                    style="width: 15px;" value="4">
                 <p style="margin-top: 2.2%; margin-left: 3%">
                     Restaurant
                 </p>
@@ -167,7 +187,7 @@
                                     style="width: 100%; padding-top: 5%; padding-left: 2%; padding-bottom: 5%">
                             </div> -->
                             <div style="max-width: 100%; height: auto; text-align: center;">
-                                <img src="<?php echo e(Storage::url($data->homestay_photo[0]->path)); ?>" alt="Thumbnail" style="max-width: 100%; height: auto;">
+                                <img src="<?php echo e(Storage::url($data->homestay_photo[0]->path)); ?>" alt="Thumbnail" style="max-width: 100%; height: 300px; width: 400px">
                             </div>
                         </li>
                     </ul>
@@ -271,18 +291,55 @@
                 </div>
 
     </div>
-    <div style="display: flex;justify-content:center;align-items: center;width: fit-content; height:fit-content;margin-bottom: 30px">
-        <?php $__currentLoopData = $data->homestay_photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pho): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php if($data->index == 1): ?>
-            <img src="<?php echo e(Storage::url($pho->path)); ?>"
-                style="width: 50%; float: left; margin: 1%; border-top-left-radius: 20px; border-bottom-left-radius: 20px">
-            <?php else: ?>
-            <div class="tes" style="width:100;display:grid;grid-template-columns: 1fr 1fr ;grid-template-rows: 1fr 1fr; row-gap: 10px; column-gap: 30px">
-                <img src="<?php echo e(Storage::url($pho->path)); ?>" style="width: 100%; float: left; margin: 1%">
+
+    
+    
+    <div class = "row">
+        <div class="column" style="flex:50%; width:100px; display:grid  grid-template-columns: 10fr 1fr ; grid-template-rows: 10fr 1fr; row-gap: 10px; column-gap: 20px">
+            <img src="<?php echo e(Storage::url($data->homestay_photo[0]->path)); ?>" style="height:350px; width:665px; float: left; margin: 1%">
+        </div>
+
+        <div class="column" style="flex:50%; width:100px; display:grid  grid-template-columns: 10fr 1fr ; grid-template-rows: 10fr 1fr; row-gap: 10px; column-gap: 20px">
+            <?php if(isset($data->homestay_photo[1])): ?>
+            <div class = "row">
+                <div class="column" style="flex:50%; width:100px; display:grid  grid-template-columns: 10fr 1fr ; grid-template-rows: 10fr 1fr; row-gap: 10px; column-gap: 20px">
+                    <img src="<?php echo e(Storage::url($data->homestay_photo[1]->path)); ?>" style="flex:50%; height:170px; width: 340px; float: left; margin: 1%">
+                </div>
+            
+                <?php if(isset($data->homestay_photo[2])): ?>
+                <div class="column" style="flex:50%; width:100px; display:grid  grid-template-columns: 10fr 1fr ; grid-template-rows: 10fr 1fr; row-gap: 10px; column-gap: 20px">
+                    <img src="<?php echo e(Storage::url($data->homestay_photo[2]->path)); ?>" style="flex:50%; height:170px; width: 340px; float: right; margin: 1%">
+                </div>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+            <?php if(isset($data->homestay_photo[3])): ?>
+            <div class = "row">
+                <div class="column" style="flex:50%; width:100px; display:grid  grid-template-columns: 10fr 1fr ; grid-template-rows: 10fr 1fr; row-gap: 10px; column-gap: 20px">
+                    <img src="<?php echo e(Storage::url($data->homestay_photo[3]->path)); ?>" style="flex:50%; height:170px; width: 340px; float: left; margin: 1%">
+                </div>
+                <?php endif; ?>
+
+            <?php if(isset($data->homestay_photo[4])): ?>
+                <div class="column" style="flex:50%; width:100px; display:grid  grid-template-columns: 10fr 1fr ; grid-template-rows: 10fr 1fr; row-gap: 10px; column-gap: 20px">
+                    <img src="<?php echo e(Storage::url($data->homestay_photo[4]->path)); ?>" style="flex:50%; height:170px; width: 340px; float: right; margin: 1%">
+                </div>
+            </div>
+            <?php endif; ?>
+
+        </div>
     </div>
+
+    <script>
+        function grid() {
+            for (i = 0; i < elements.length; i++) {
+                elements[i].style.msFlex = "50%";
+                elements[i].style.flex = "50%";
+            }
+        }
+    </script>
+
     <div style="display: flex;">
         <ul style="list-style: none; width: 40%">
             <li>
@@ -336,11 +393,12 @@
                 $pp_count = $data->popular_place->count();
                 $count = max($np_count, $pp_count);
 
-                $tnp = $data->nearby_place->sortBy('distance')->toArray();
+                // sort by distance. jika distance sama, sort by name
+                $tnp = $data->nearby_place->sortBy('name')->sortBy('distance')->toArray();
                 $snp_name = array_column($tnp, 'name');
                 $snp_distance = array_column($tnp, 'distance');
 
-                $tpp = $data->popular_place->sortBy('distance')->toArray();
+                $tpp = $data->popular_place->sortBy('name')->sortBy('distance')->toArray();
                 $spp_name = array_column($tpp, 'name');
                 $spp_distance = array_column($tpp, 'distance');
                 ?>
@@ -374,7 +432,7 @@
         <p style="font-weight: bold"><i class="fa fa-map-marker"></i> <?php echo e($data->location); ?></p>
         <div class="mapouter">
             <div class="gmap_canvas"><iframe width="100%" height="510" id="gmap_canvas"
-                    src="https://maps.google.com/maps?q=<?php echo e($data->maps); ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    src="https://maps.google.com/maps?q=<?php echo e($data->address); ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"
                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
                     href="https://2yu.co">2yu</a><br>
                 <style>
@@ -403,16 +461,27 @@
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 <script>
-    // SORTING
-    
-    //tester two start
-    $('input[type=radio][name=sort_by]').change(function() {
+
+    // $('input[type=radio][name=sort_by]').change(function() {
+    //     var url = "<?php echo e(url('/homestay')); ?>";
+    //     var sort_by = $('input[type=radio][name=sort_by]:checked').val();
+    //     window.location.href = url + "?sort_by=" + sort_by;
+    //     //window.location.href = url + "/filter?tes=" + sort_by;
+    // });
+
+    $('input[type=radio][name=sort_by]').on('click', function(){
         var url = "<?php echo e(url('/homestay')); ?>";
         var sort_by = $('input[type=radio][name=sort_by]:checked').val();
-        window.location.href = url + "?sort_by=" + sort_by;
+        window.location.href = url + "/sort_by=" + sort_by;
     });
-    //tester two end
-    
+
+    $('input[type=radio][name=facilities]').on('click', function(){
+        var url = "<?php echo e(url('/homestay')); ?>";
+        var filter = $('input[type=radio][name=facilities]:checked').val();
+        window.location.href = url + "/filter_by=" + filter;
+    });
+
+    // SORTING
     function dynamicSort(property, sorting) {
         var sortOrder = 1;
         if (property[0] === "-") {
@@ -433,8 +502,65 @@
         }
     }
 
+    
+
+        $('input[type=radio][name=asort_by]').on('click', function(e){
+            e.preventDefault();
+            var sort_by = $(this).val();
+            var params = this.id;
+            console.log("sort_by: " + sort_by + " params:" + params)
+            $.ajax({
+                url: "<?php echo e(route('filter')); ?>",
+                type: 'GET',
+                data: {'tes': sort_by},
+                success: function(data){
+                    //console.log("data: " + data);
+                    data.homes.sort(dynamicSort(params, sort_by));
+                    var html = "";
+                    var home = data.homes;
+                    if(home.length > 0){
+                        for(let i = 0; i<home.length; i++){
+                            var star = "";
+                            for(let y=1; y <= home[i].rating; y++){
+                                star += "<i style='color:#ffdf00' class='bi bi-star-fill'></i>"
+                                if(home[i].rating % 1 != 0 && y+0.5==home[i].rating){
+                                    star += "<i style='color:#ffdf00' class='bi bi-star-half'></i>"
+                                }
+                            }
+                            for(let y=1; y<5-home[i].rating; y++){
+                                if(y+0.5 != home[i].rating){
+                                    star+="<i style='color:#ffdf00' class='bi bi-star'></i>"
+                                }
+                            }
+
+                            var wifi=""
+                            if(home[i].wifi==1){
+                                wifi+="<i class='fa fa-wifi'></i>"
+                            }
+                            var res=""
+                            if(home[i].restaurant==1){
+                                res+=" <i class='fa fa-cutlery'></i>"
+                            }
+                            var park=""
+                            if(home[i].parking==1){
+                                park+="<i class='fa fa-product-hunt'></i>"
+                            }
+                            var ac=""
+                            if(home[i].ac==1){
+                                ac+="<img width='18px' src='/gambar/Vector.svg'>"
+                            }
+
+                            html +="<li style='list-style: none; width: 100%; border: outset 3px; border-radius: 35px; margin-bottom: 5%'><div style='width: 100%; height: 100%'><div style='display: flex'><ul style='width: 45%; padding-left: 1%'><li style='list-style: none;'><img src='assets/img/"+ home[i].thumbnail+ "' style='width: 100%; padding-top: 5%;padding-left: 2%; padding-bottom: 5%'></li></ul>" + "<ul style='width: 35%; padding-left: 2%; padding-top: 2%'><li style='list-style: none;'><h5>" + home[i].name +"</h5></li><li style='list-style:none;'>" + star + "</li><li style='list-style: none;'><h5>" + wifi + res + park+ ac +"</h5></li></ul>" + "<ul style='width: 20%; margin-right: 2%; padding-top: 17%'><li style='list-style: none;'><h5>IDR " + home[i].price + "/night</h5> </li><li style='list-style: none; display: flex;'><button type='submit' onclick=" + "document.getElementById('homeStayDetail"+ home[i].id + "').style.display='block'; document.getElementById('homeStay').style.display='none'class='btn btn-primary mb-2'style='width: 100%; background:linear-gradient(to right, #27b448, #72b426); border-radius: 15px'>Details</button></li></ul></div></div></li>"
+                        }
+                        $("#list-item").html(html);
+                        console.log(html);
+                    }
+                }
+            })
+        });
+
     $(document).ready(function(){
-        $('input[type=radio][name=facilities]').on('click', function(){
+        $('input[type=radio][name=afacilities]').on('click', function(){
             var tes = $(this).val();
             var params = this.id;
                     // console.log(params)
@@ -468,7 +594,7 @@
                             }
                             var res=""
                             if(home[i].restaurant==1){
-                                resss+=" <i class='fa fa-cutlery'></i>"
+                                res+=" <i class='fa fa-cutlery'></i>"
                             }
                             var park=""
                             if(home[i].parking==1){
@@ -488,60 +614,6 @@
                         var html = "No Record Available"
                         $("#list-item").html(html);
                     }
-                }
-            })
-        });
-
-        $('input[type=radio][name=sort_by]').on('click', function(){
-            var tes = $(this).val();
-            var params = this.id;
-            $.ajax({
-                url: "<?php echo e(route('filter')); ?>",
-                type: 'GET',
-                data: {'tes': tes},
-                success: function(data){
-                    // console.log(data);
-                    data.homes.sort(dynamicSort(params, tes));
-                    var html = "";
-                    var home = data.homes;
-                    if(home.length > 0){
-                        for(let i = 0; i<home.length; i++){
-                            var star = "";
-                            for(let y=1; y <= home[i].rating; y++){
-                                star += "<i style='color:#ffdf00' class='bi bi-star-fill'></i>"
-                                if(home[i].rating % 1 != 0 && y+0.5==home[i].rating){
-                                    star += "<i style='color:#ffdf00' class='bi bi-star-half'></i>"
-                                }
-                            }
-                            for(let y=1; y<5-home[i].rating; y++){
-                                if(y+0.5 != home[i].rating){
-                                    star+="<i style='color:#ffdf00' class='bi bi-star'></i>"
-                                }
-                            }
-
-                            var wifi=""
-                            if(home[i].wifi==1){
-                                wifi+="<i class='fa fa-wifi'></i>"
-                            }
-                            var res=""
-                            if(home[i].restaurant==1){
-                                resss+=" <i class='fa fa-cutlery'></i>"
-                            }
-                            var park=""
-                            if(home[i].parking==1){
-                                park+="<i class='fa fa-product-hunt'></i>"
-                            }
-                            var ac=""
-                            if(home[i].ac==1){
-                                ac+="<img width='18px' src='/gambar/Vector.svg'>"
-                            }
-
-                            html +="<li style='list-style: none; width: 100%; border: outset 3px; border-radius: 35px; margin-bottom: 5%'><div style='width: 100%; height: 100%'><div style='display: flex'><ul style='width: 45%; padding-left: 1%'><li style='list-style: none;'><img src='assets/img/"+ home[i].thumbnail+ "' style='width: 100%; padding-top: 5%;padding-left: 2%; padding-bottom: 5%'></li></ul>" + "<ul style='width: 35%; padding-left: 2%; padding-top: 2%'><li style='list-style: none;'><h5>" + home[i].name +"</h5></li><li style='list-style:none;'>" + star + "</li><li style='list-style: none;'><h5>" + wifi + res + park+ ac +"</h5></li></ul>" + "<ul style='width: 20%; margin-right: 2%; padding-top: 17%'><li style='list-style: none;'><h5>IDR " + home[i].price + "/night</h5> </li><li style='list-style: none; display: flex;'><button type='submit' onclick=" + "document.getElementById('homeStayDetail"+ home[i].id + "').style.display='block'; document.getElementById('homeStay').style.display='none'class='btn btn-primary mb-2'style='width: 100%; background:linear-gradient(to right, #27b448, #72b426); border-radius: 15px'>Details</button></li></ul></div></div></li>"
-                        }
-                        $("#list-item").html(html);
-                        console.log(html);
-                    }
-
                 }
             })
         });

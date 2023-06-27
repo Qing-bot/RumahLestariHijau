@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -97,39 +99,39 @@
     <!-- Footer  -->
     <footer style="background: linear-gradient(rgb(42 180 70), rgb(98 180 38))" id="footer">
         <div style="max-width: 100%; margin: auto; display: flex">
-            <ul>
+                <ul>
                 <li style="list-style: none;">
-                    <div style="font-size: 100%; margin-bottom: 1%; margin-top: 2%">
+                    <div style="font-size: 100%; margin-bottom: 1%; margin-top: 5%; margin-left:8%;">
                         <b>
                         Office Address
                         </b>
                     </div>
-
-                    <p style="color: white;">
+                    <p style="color: white; margin-left:8%; margin-right:40%;">
+                    <img src="/gambar/location-pointer.png" style="width: 5%;">
                         Pulau Pramuka, Pulau Panggang, Kepulauan Seribu Utara, Kab. Administrasi Kepulauan Seribu, Daerah Khusus Ibukota Jakarta 14530
                     </p>
                 </li>
 
                 <li style="list-style: none;">
-                    <div style="font-size: 100%; margin-bottom: 1%; margin-top: -1%">
+                    <div style="font-size: 100%; margin-bottom: 1%; margin-top: -1%; margin-left:8%;">
                         <b>
                         Email
                         </b>
                     </div>
-
-                    <p style="color: white">
+                    <p style="color: white; margin-left:8%;">
+                    <img src="/gambar/email.png" style="width: 3%;">
                     rumahliterasihijau@gmail.com
                     </p>
                 </li>
 
                 <li style="list-style: none;">
-                    <div style="font-size: 100%; margin-bottom: 1%; margin-top: -1%">
+                    <div style="font-size: 100%; margin-bottom: 1%; margin-top: -1%; margin-left:8%;">
                         <b>
                         Contact Person
                         </b>
                     </div>
-
-                    <p style="color: white">
+                    <p style="color: white; margin-left:8%;">
+                    <img src="/gambar/phone-receiver-silhouette.png" style="width: 3%">
                         081202938495
                     </p>
                 </li>
@@ -137,7 +139,7 @@
 
             <ul>
                 <li style="list-style: none;">
-                    <P style="margin-bottom: 1%; margin-top: 4%; color: white; text-align: center">
+                    <P style="margin-bottom: 1%; margin-top: 15%; color: white; text-align: center; margin-right:35%;">
                         <b>
                             SIGN UP AND SAVE
                         </b>
@@ -145,17 +147,22 @@
                 </li>
 
                 <li style="list-style: none;">
-                    <P style="margin-bottom: 1%; margin-top: 1.5%; color: white; text-align: center">
+                    <P style="margin-bottom: 1%; margin-top: 1.5%; color: white; text-align: left; margin-right:25%;">
                         Subscribe to get special offers, free giveaway, and once in a lifetime deals
                     </P>
                 </li>
 
-                <div style="width: 100%; margin-top: 4%">
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Enter Your Email" style="width: 100%; background: #094222; color: white; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px">
+                <div style="width: 100%; margin-top: 4%;">
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Enter Your Email" style="float: left; width: 45%; background: #094222; color: white; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;">
+                    <button type="submit" class="btn btn-primary mb-2" style="clear: both; width: 25%; background: linear-gradient(to right, #f0572e, #f0312e); border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;">Subscribe</button>
                 </div>
+            </ul>
 
-                <div style="margin-top: 2%">
-                    <button type="submit" class="btn btn-primary mb-2" style="background: linear-gradient(to right, #f0572e, #f0312e); border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px">Subscribe</button>
+            <ul>
+                <div class="rounded-social-buttons col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <a class="social-button whatsapp" href="https://api.whatsapp.com/send/?phone=6281202938495&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                    <a class="social-button instagram" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a class="social-button facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </ul>
         </div>

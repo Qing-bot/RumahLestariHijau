@@ -136,9 +136,12 @@ Route::delete('/deleteTablePromo/{id}',[RegisterController::class, 'deletePromo'
 
 // -----------------------------------
 Route::get('/homestay', [ViewController::class, 'indexHomestay'])->name('homestay');
+Route::get('/homestay/sort_by={id}', [ViewController::class, 'sortHomestay'])->name('homestay');
+Route::get('/homestay/filter_by={id}', [ViewController::class, 'filterHomestayFacilities'])->name('homestay');
 Route::get('/homestay/filter', [ViewController::class, 'filterHomestay'])->name('filter');
 
 Route::get('/culinary', [ViewController::class, 'indexCulinary'])->name('culinary');
+Route::get('/culinary/sort_by={id}', [ViewController::class, 'sortCulinary']);
 Route::get('/culinary/filter', [ViewController::class, 'filterCulinary'])->name('filterc');
 
 Route::get('/souvenir', [ViewController::class, 'indexSouvenir'])->name('souvenir');
@@ -146,9 +149,7 @@ Route::get('/souvenir', [ViewController::class, 'indexSouvenir'])->name('souveni
 Route::get('/promo', [ViewController::class, 'indexPromo'])->name('promo');
 
 Route::get('/destination', [ViewController::class, 'indexDestination'])->name('destination');
-
-
-
+Route::get('/destinationDetail/{id}', [ViewController::class, 'indexDestinationDetail'])->name('destinationDetail');
 
 // Route::get('/promo', function(){
 //     return view('promo');
@@ -157,6 +158,4 @@ Route::get('/destination', [ViewController::class, 'indexDestination'])->name('d
 Route::get('/contactUs', [ContactUsController::class, 'index']
 )->name('contactUs');
 
-Route::get('/destinationDetail/{id}', [ViewController::class, 'indexDestinationDetail'])->name('destinationDetail');
 
-Route::resource('products', ProductController::class);
