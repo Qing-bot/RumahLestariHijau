@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Culinary;
 use App\Models\Destination;
+use App\Models\DestinationPrice;
 use App\Models\Homestay;
 use App\Models\HomestayPhoto;
 use App\Models\NearbyPlace;
@@ -17,21 +18,48 @@ use Illuminate\Support\Facades\Auth;
 class ViewController extends Controller
 {
 
-    //$path = public_path()
-
     public function index(){
-        $culinary = Culinary::all()->first();
-        $destination = Destination::all()->first();
+        $culinary = Culinary::all();
+        $destination = Destination::all();
         $promo = Promo::all();
         // dd($culinary);
-        return view('home', ['cul' => $culinary, 'hs' => $destination, 'pr'=>$promo]);
-
+        return view('home', ['cul' => $culinary, 'des' => $destination, 'pr'=>$promo]);
     }
 
     public function indexHomestay(){
         $hs = Homestay::all();
         return view('homestay', compact('hs'));
     }
+
+    public function sortHomestay($id){
+        if ($id == 1){
+            $hs = Homestay::orderBy('price')->get();
+        }
+        else if ($id == 2){
+            $hs = Homestay::orderBy('price', 'desc')->get();
+        }
+        else if ($id == 3){
+            $hs = Homestay::orderBy('like', 'desc')->get();
+        }
+        return view('homestay', compact('hs'));
+    }
+
+    public function filterHomestayFacilities($id){
+        if($id == 1){
+             $hs = Homestay::query()->where(['wifi'=> 1])->get();
+        }
+        else if($id == 2){
+             $hs = Homestay::query()->where(['parking'=>1])->get();
+        }
+        else if($id == 3){
+             $hs = Homestay::query()->where(['ac'=>1])->get();
+        }
+        else if($id == 4){
+             $hs = Homestay::query()->where(['restaurant'=>1])->get();
+        }
+        return view('homestay', compact('hs'));
+    }
+
     public function filterHomestay(Request $request){
         $hs = Homestay::all();
         if($request->ajax()){
@@ -60,6 +88,20 @@ class ViewController extends Controller
         $data = Culinary::all();
         return view('culinary', ['culi'=>$data]);
     }
+
+    public function sortCulinary($id){
+        if ($id == 1){
+            $data = Culinary::orderBy('price')->get();
+        }
+        else if ($id == 2){
+            $data = Culinary::orderBy('price', 'desc')->get();
+        }
+        else if ($id == 3){
+            $data = Culinary::orderBy('like', 'desc')->get();
+        }
+        return view('culinary', ['culi'=> $data]);
+    }
+
     public function filterCulinary(Request $request){
         $data = Culinary::all();
         if($request->ajax()){
@@ -91,9 +133,9 @@ class ViewController extends Controller
     }
     public function indexAdminEditHomestay($id){
         $data = Homestay::find($id);
-        $pho = HomestayPhoto::where('homestay_id', $id)->orderBy('index','asc')->get();
-        $np = NearbyPlace::where('homestay_id', $id);
-        $pp = PopularPlace::where('homestay_id', $id);
+        $pho = HomestayPhoto::where('homestay_id', $id)->orderBy('index', 'asc')->get();
+        $np = NearbyPlace::where('homestay_id', $id)->get();
+        $pp = PopularPlace::where('homestay_id', $id)->get();
 
         return view('admin.editHomestay', ['data' => $data, 'pho'=> $pho, 'np' => $np, 'pp' => $pp]);
     }
@@ -113,7 +155,8 @@ class ViewController extends Controller
     }
     public function indexAdminEditDestination($id){
         $data = Destination::find($id);
-        return view('admin.editDestination', ['data'=>$data]);
+        $price = DestinationPrice::where('destination_id', $id)->orderBy('min_person', 'asc')->get();
+        return view('admin.editDestination', ['data'=> $data, 'price' => $price ]);
     }
 
     public function indexAdminSouvenir(){

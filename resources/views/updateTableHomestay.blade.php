@@ -30,7 +30,7 @@
         <label for="homestay_image">Upload Gambar</label>
             <input id="homestay_image" type="file" class="form-control" name='upload' placeholder="Example input" accept=".png,.jpg,.jpeg" value="{{ $product->value }}">
                 @if (!empty($product->upload))
-                    <img src="{{ asset('storage/homestay_images/' . $product->upload) }}" width="100px">
+                    <img src="{{ asset('homestay_img/' . $product->upload) }}" width="100px">
                 @endif
                 @error('upload')
                     <div class="alert alert-danger">{{ $message }}</div>

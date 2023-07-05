@@ -68,6 +68,7 @@
             <th>No</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Price</th>
             <th>Images</th>
             <th>Action</th>
         </tr>
@@ -79,7 +80,8 @@
                 <td><?php echo e($loop->index+1); ?></td>
                 <td><?php echo e($data->name); ?></td>
                 <td style="white-space: pre-line"><?php echo e($data->description); ?></td>
-                <td><img src="<?php echo e(Storage::url($data->photo)); ?>" alt="" width="100px"></td>
+                <td style="white-space: pre-line">Rp. <?php echo e($data->price); ?></td>
+                <td><img src="<?php echo e(Storage::url($data->photo)); ?>" alt="" height="80px" width="100px"></td>
                 
                 <td>
                     <a href="/editDestination/<?php echo e($data->id); ?>" class="btn btn-secondary"> Edit</a>

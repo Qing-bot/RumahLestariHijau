@@ -41,8 +41,16 @@
 
     <div class="form-group">
         <label for="address">Address Destination</label>
-        <input class="form-control" name="address" value="{{$data->maps}}" id="address" placeholder="Jl. Anggrek No. 21">
+        <input class="form-control" name="address" value="{{$data->address}}" id="address" placeholder="Jl. Anggrek No. 21">
         @error('address')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <label for="address">Price Destination</label>
+        <input id="price" type="number" class="form-control" name='price' value="{{$data->price}}" placeholder="100000">
+        @error('price')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
@@ -55,34 +63,50 @@
         @enderror
     </div>
 
+    <!--
+    @foreach ($price as $data)
     <div class="form-group">
-        <label for="price1">Price Destination (1-4 Pax)</label>
-        <input id="price1" type="number" class="form-control" name='price1' placeholder="100000" value="{{$data->price1}}">
-        @error('price1')
+        <label for="person{{$loop->index+1}}"> Price Destination for </label>
+            
+        <div id="parent" style="display: flex;">
+            <div id="left" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 10; border: 1px;">
+                <input id="minp{{$loop->index+1}}" type="number" class="form-control" name='minp{{$loop->index+1}}' 
+                style='width:10em' placeholder="100000" value="{{$price[$loop->index]->min_person}}">
+            </div>
+            -
+            <div id="right" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 1; border: 1px;">
+                <input id="maxp{{$loop->index+1}}" type="number" class="form-control" name='maxp{{$loop->index+1}}' 
+                style='width:10em' placeholder="100000" value="{{$price[$loop->index]->max_person}}">
+            </div>
+            Pax
+        </div>
+         
+        <input id="price{{$loop->index+1}}" type="number" class="form-control" name='price{{$loop->index+1}}' 
+            placeholder="100000" value="{{$price[$loop->index]->price}}">
+        
+        @error('price{{$loop->index+1}}')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
+    @endforeach
+
     <div class="form-group">
-        <label for="price2">Price Destination (5-9 Pax)</label>
-        <input id="price2" type="number" class="form-control" name='price2' value="{{$data->price2}}" placeholder="100000">
-        @error('price2')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+        <label for="personnew"> Left if empty if dont want. Add new Price Destination for </label>
+            
+        <div id="parent" style="display: flex;">
+            <div id="left" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 10; border: 1px;">
+                <input id="minpnew" type="number" class="form-control" name='minpnew' 
+                style='width:10em' placeholder="2">
+            </div>
+            -
+            <div id="right" style="flex-basis: 50%; flex-grow: 1; flex-shrink: 1; border: 1px;">
+                <input id="maxpnew" type="number" class="form-control" name='maxpnew' 
+                style='width:10em' placeholder="3">
+            </div>
+            Pax
+        </div>
     </div>
-    <div class="form-group">
-        <label for="price3">Price Destination (10-14 Pax)</label>
-        <input id="price3" type="number" class="form-control" name='price3' placeholder="100000" value="{{$data->price3}}">
-        @error('price3')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="price4">Price Destination (15 Pax++)</label>
-        <input id="price4" type="number" class="form-control" name='price4' placeholder="100000" value="{{$data->price4}}">
-        @error('price4')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
+    -->
 
     <button type="submit" class="btn btn-primary">{{ __('Edit Destination') }}</button>
     @endif

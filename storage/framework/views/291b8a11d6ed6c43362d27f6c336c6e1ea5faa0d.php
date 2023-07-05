@@ -83,9 +83,7 @@
                 <td><?php echo e($data->description); ?></td>
                 <td><?php echo e($data->price); ?></td>
                 <td><?php echo e($data->like/1000); ?>K</td>
-                
-                <td><img src="<?php echo e(Storage::url($data->photo[0]->path)); ?>" alt="" width="100px"></td>
-                
+                <td><img src="<?php echo e(Storage::url($data->photo)); ?>" alt="" height="80px" width="100px"></td>
                 <td>
                     <a href="/editCulinary/<?php echo e($data->id); ?>" class="btn btn-secondary"> Edit</a>
                     <!-- <button type="submit" class="btn btn-primary"></button> -->

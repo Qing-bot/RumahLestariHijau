@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Culinary;
 use App\Models\Destination;
+use App\Models\DestinationPrice;
 use App\Models\Homestay;
 use App\Models\HomestayPhoto;
 use App\Models\NearbyPlace;
@@ -14,8 +15,9 @@ use App\Models\Souvenir;
 use DateTime;
 use Illuminate\Http\Request;
 
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-
 
 
 class RegisterController extends Controller {
@@ -351,9 +353,30 @@ class RegisterController extends Controller {
             ]);
         }
 
-        if ($hs->name != $request->name){
-            Storage::move('homestay_img/'.$hs->name, 'homestay_img/'.$request->name);
+        if ($request->name != $hs->name){
+            if ($file1 == null && $hs->homestay_photo[1]->path != null) {
+                $fileAddress = public_path('storage/'. $hs->homestay_photo[1]->path);
+                $file1 = new UploadedFile($fileAddress, $hs->homestay_photo[1]->path);
+                $request->files->set('upload1', $file1);
+            }
+            if ($file2 == null && $hs->homestay_photo[2]->path != null) {
+                $fileAddress = public_path('storage/'. $hs->homestay_photo[2]->path);
+                $file2 = new UploadedFile($fileAddress, $hs->homestay_photo[2]->path);
+                $request->files->set('upload2', $file2);
+            }
+            if ($file3 == null && $hs->homestay_photo[3]->path != null) {
+                $fileAddress = public_path('storage/'. $hs->homestay_photo[3]->path);
+                $file3 = new UploadedFile($fileAddress, $hs->homestay_photo[3]->path);
+                $request->files->set('upload3', $file3);
+            }
+            if ($file4 == null && $hs->homestay_photo[4]->path != null) {
+                $fileAddress = public_path('storage/'. $hs->homestay_photo[4]->path);
+                $file4 = new UploadedFile($fileAddress, $hs->homestay_photo[4]->path);
+                $request->files->set('upload4', $file4);
+            }
         }
+
+        $oldhs_name = $hs->name;
 
         $hs->name = $request->name;
         $hs->location = $request->location;
@@ -387,6 +410,7 @@ class RegisterController extends Controller {
         }else{
             $hs->ac = 0;
         }
+
         $hs->save();
 
         $count = count($hs->homestay_photo);
@@ -402,18 +426,17 @@ class RegisterController extends Controller {
             Storage::delete($hs->homestay_photo[0]->path);
             Storage::putFileAs('homestay_img/'.$temp.'/', $file, $thumb_path);
             $thumb_path = 'homestay_img/'.$temp.'/'.$thumb_path;
-            $hs->homestay_photo->path = $thumb_path;
 
             $hs->homestay_photo[0]->homestay_id = $hs->id;
             $hs->homestay_photo[0]->index = 1;
             $hs->homestay_photo[0]->path = $thumb_path;
             $hs->homestay_photo[0]->save();
         }
+
         if($file1!=null){
             $request->validate([
                 'upload1' => 'image'
             ]);
-
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $temp = $this->getName($request->name, 10);
@@ -436,15 +459,15 @@ class RegisterController extends Controller {
                 $pho1->save();
             }
         }
+
         if($file2!=null){
             $request->validate([
                 'upload2' => 'image'
             ]);
-
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $temp = $this->getName($request->name, 10);
-            $img2_path = 'img1_'.$dt.'.'.$file2->getClientOriginalExtension();
+            $img2_path = 'img2_'.$dt.'.'.$file2->getClientOriginalExtension();
             Storage::putFileAs('homestay_img/'.$temp.'/', $file2, $img2_path);
             $img2_path = 'homestay_img/'.$temp.'/'.$img2_path;
 
@@ -452,14 +475,14 @@ class RegisterController extends Controller {
                 Storage::delete($hs->homestay_photo[2]->path);
                 $hs->homestay_photo[2]->homestay_id = $hs->id;
                 $hs->homestay_photo[2]->index = 3;
-                $hs->homestay_photo[2]->path = $img1_path;
+                $hs->homestay_photo[2]->path = $img2_path;
                 $hs->homestay_photo[2]->save();
             }
             else{
                 $pho2 = new HomestayPhoto();
                 $pho2->homestay_id = $hs->id;
                 $pho2->index = 3;
-                $pho2->path = $img1_path;
+                $pho2->path = $img2_path;
                 $pho2->save();
             }
         }
@@ -471,7 +494,7 @@ class RegisterController extends Controller {
             $dt = new DateTime();
             $dt = $dt->format('Ymd_His');
             $temp = $this->getName($request->name, 10);
-            $img3_path = 'img1_'.$dt.'.'.$file3->getClientOriginalExtension();
+            $img3_path = 'img3_'.$dt.'.'.$file3->getClientOriginalExtension();
             Storage::putFileAs('homestay_img/'.$temp.'/', $file3, $img3_path);
             $img3_path = 'homestay_img/'.$temp.'/'.$img3_path;
 
@@ -486,7 +509,7 @@ class RegisterController extends Controller {
                 $pho3 = new HomestayPhoto();
                 $pho3->homestay_id = $hs->id;
                 $pho3->index = 4;
-                $pho3->path = $img1_path;
+                $pho3->path = $img3_path;
                 $pho3->save();
             }
         }
@@ -513,7 +536,7 @@ class RegisterController extends Controller {
                 $pho4 = new HomestayPhoto();
                 $pho4->homestay_id = $hs->id;
                 $pho4->index = 5;
-                $pho4->path = $img1_path;
+                $pho4->path = $img4_path;
                 $pho4->save();
             }
         }
@@ -618,6 +641,10 @@ class RegisterController extends Controller {
             $np4->save();
         }
 
+        if ($oldhs_name != $hs->name){
+            Storage::deleteDirectory('homestay_img/'.$this->getName($oldhs_name, 10));
+        }
+
         return redirect()->route('tableHomestay');
     }
     public function deleteHomestay(Request $request, $id){
@@ -654,7 +681,7 @@ class RegisterController extends Controller {
         $data->description = $request->description;
         $data->like = $request->like;
         $data->price = $request->price;
-        $data->save();
+        
 
         if($file!=null){
             $request->validate([
@@ -667,6 +694,10 @@ class RegisterController extends Controller {
             Storage::putFileAs('culinary_img/', $file, $cul_path);
             $cul_path = 'culinary_img/'.$cul_path;
         }
+
+        $data->photo = $cul_path;
+        $data->save();
+
         return redirect('/tableCulinary');
     }
     public function editCulinary(Request $request, $id){
@@ -684,7 +715,6 @@ class RegisterController extends Controller {
         $data->description = $request->description;
         $data->like = $request->like;
         $data->price = $request->price;
-        $data->save();
 
         if($file!==null){
             $request->validate([
@@ -694,15 +724,16 @@ class RegisterController extends Controller {
             $dt = $dt->format('Ymd_His');
             $temp = $this->getName($data->name, 10);
             $cul_path = $temp.'_'.$dt.'.'.$file->getClientOriginalExtension();
-            Storage::delete($data->photo[0]->path);
+            Storage::delete($data->photo);
             Storage::putFileAs('culinary_img/', $file, $cul_path);
             //dd($cul_path);
 
             $cul_path = 'culinary_img/'.$cul_path;
-            $pho = $data->photo[0];
-            $pho->path = $cul_path;
-            $pho->save();
+            
         }
+
+        $data->photo = $cul_path;
+        $data->save();
 
         // dd($pho);
         return redirect('/tableCulinary');
@@ -720,30 +751,24 @@ class RegisterController extends Controller {
     }
 
     public function addDestination(Request $request){
-        // dd($request);
+        //dd($request);
         $file = $request->file('image');
         $request->validate([
             'name' => 'required',
             'description'=>'required',
             'rundown' => 'required',
             'address' => 'required',
-            'price1'=>'required',
-            'price2'=>'required',
-            'price3'=>'required',
-            'price4'=>'required',
             'image' => 'required',
+            'price' => 'required'
         ]);
 
         $data = new Destination();
         $data->name = $request->name;
         $data->description = $request->description;
         $data->rundown = $request->rundown;
-        $data->maps = $request->address;
-        $data->price1 = $request->price1;
-        $data->price2 = $request->price2;
-        $data->price3 = $request->price3;
-        $data->price4 = $request->price4;
-
+        $data->address = $request->address;
+        $data->price = $request->price;
+        
         if($file!=null){
             $request->validate([
                 'image' => 'image'
@@ -761,12 +786,64 @@ class RegisterController extends Controller {
 
         $data->save();
 
+        // $dprice = new DestinationPrice();
+        // $dprice->destination_id = $data->id;
+        // $dprice->min_person = $request->minpnew;
+        // $dprice->max_person = $request->maxpnew;
+        // $dprice->price = $request->pricenew;
+        // $dprice->save();
+
         return redirect('/tableDestination');
     }
     public function editDestination(Request $request, $id) {
         $file = $request->file('image');
         $data = Destination::find($id);
 
+        // $arr = $request->toArray();
+        // $rq_arr = array_chunk(array_splice($arr, 5, count($arr)), 3);
+
+        // //check if min and max person value from input have duplicate
+        // $rq_person = array_merge(array_column($rq_arr, '0'), array_column($rq_arr, '1'));
+        // if ( count($rq_person) !== count(array_unique($rq_person)) ){
+        //     return redirect()->back()->with('failed', 'min or max person got duplicate');
+        // }
+
+        // //check if price value from input have duplicate
+        // $rq_price = array_column($rq_arr, '2');
+        // if ( count($rq_price) !== count(array_unique($rq_price)) ){
+        //     return redirect()->back()->with('failed', 'price got duplicate');
+        // }
+
+        // $desprice = DestinationPrice::where('destination_id', $id)->orderBy('min_person', 'asc')->get();
+
+        // $idx = 0;
+        // foreach ($desprice as $dprice){
+        //     if ( $dprice->min_person != $rq_arr[$idx][0] || $dprice->max_person != $rq_arr[$idx][1] 
+        //         || $dprice->price != $rq_arr[$idx][2]) 
+        //         {
+        //             if ($rq_arr[$idx][0] >= $rq_arr[$idx][1]){
+        //                 // min > max person. failed
+        //                 return redirect()->back()->with('failed', 'min person bigger than max person');
+        //             }
+
+        //             $dprice->min_person = $rq_arr[$idx][0];
+        //             $dprice->max_person = $rq_arr[$idx][1];
+        //             $dprice->price = $rq_arr[$idx][2];
+        //             $dprice->save();
+        //         }
+        //     $idx++;
+        // }
+
+        // if (count($rq_arr) > $desprice->count())
+        // {
+        //     $dprice = new DestinationPrice();
+        //     $dprice->destination_id = $id;
+        //     $dprice->min_person = $rq_arr[$idx][0];
+        //     $dprice->max_person = $rq_arr[$idx][1];
+        //     $dprice->price = $rq_arr[$idx][2];
+        //     $dprice->save();
+        // }
+            
         if($file!=null){
             $request->validate([
                 'image' => 'image'
@@ -785,11 +862,8 @@ class RegisterController extends Controller {
         $data->name = $request->name;
         $data->description = $request->description;
         $data->rundown = $request->rundown;
-        $data->maps = $request->address;
-        $data->price1 = $request->price1;
-        $data->price2 = $request->price2;
-        $data->price3 = $request->price3;
-        $data->price4 = $request->price4;
+        $data->address = $request->address;
+        $data->price = $request->price;
 
         $data->save();
 
@@ -800,11 +874,9 @@ class RegisterController extends Controller {
         Storage::delete($data->photo);
         $data->delete();
 
-
         return redirect()->back()->with('success', 'Destination deleted successfully');
     }
 
-    
     public function addSouvenir(Request $request) {
         $file = $request->file('image');
 

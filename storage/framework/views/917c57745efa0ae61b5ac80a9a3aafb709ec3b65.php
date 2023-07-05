@@ -4,6 +4,14 @@
 
 <?php $__env->startSection('content'); ?>
 
+<?php
+                
+
+                
+
+                
+?>
+
 
 
 <div style="text-align: center; font-size: 250%; font-weight: bold; margin-top: 10%; margin-bottom: 5%; color:#3bb143">Check Our <b style="color: #FF6700">Promos</b> To Get Special<br>Accommondation Prices Here</div>
@@ -15,8 +23,14 @@
     
     
     
-    <?php $__currentLoopData = $pro; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <div class="slidePromo"><a href="#"><img src="<?php echo e(Storage::url($data->photo)); ?>" class="promoImage"></a></div>
+
+    <?php
+        // sort by created_on
+        $cre = $pro->sortByDesc('created_at');
+    ?>
+
+    <?php $__currentLoopData = $cre; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <div class="slidePromo"><a href="#"><img src="<?php echo e(Storage::url($data->photo)); ?>" style="height:300px; width:300px" class="promoImage"></a></div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     
 </div>
@@ -28,8 +42,14 @@
   
 
   
-  <?php $__currentLoopData = $pro; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-  <div class="slidePromo"><a href="#"><img src="<?php echo e(Storage::url($data->photo)); ?>" class="promoImage"></a></div>
+
+  <?php
+      // sort by updated_on
+      $upd = $pro->sortByDesc('updated_at');
+  ?>
+
+  <?php $__currentLoopData = $upd; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+  <div class="slidePromo"><a href="#"><img src="<?php echo e(Storage::url($data->photo)); ?>" style="height:300px; width:300px;" class="promoImage"></a></div>
   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
 

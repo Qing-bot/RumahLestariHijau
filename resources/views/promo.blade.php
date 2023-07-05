@@ -4,6 +4,14 @@
 
 @section('content')
 
+@php
+                
+
+                
+
+                
+@endphp
+
 
 {{-- Tulisan Besar Promo --}}
 <div style="text-align: center; font-size: 250%; font-weight: bold; margin-top: 10%; margin-bottom: 5%; color:#3bb143">Check Our <b style="color: #FF6700">Promos</b> To Get Special<br>Accommondation Prices Here</div>
@@ -15,8 +23,14 @@
     {{---------------- LOOPING WHAT'S NEW LIST ----------------}}
     {{-- <div class="slidePromo"><a href="#"><img src="gambar/contohgambar.png" class="promoImage"></a></div> --}}
     {{---------------- LOOPING WHAT'S NEW LIST END ----------------}}
-    @foreach ($pro as $data)
-    <div class="slidePromo"><a href="#"><img src="{{Storage::url($data->photo)}}" class="promoImage"></a></div>
+
+    @php
+        // sort by created_on
+        $cre = $pro->sortByDesc('created_at');
+    @endphp
+
+    @foreach ($cre as $data)
+    <div class="slidePromo"><a href="#"><img src="{{Storage::url($data->photo)}}" style="height:300px; width:300px" class="promoImage"></a></div>
     @endforeach
     {{-- <div class="slidePromo"><a href="#"><img src="gambar/contohgambar.png" class="promoImage"></a></div>
     <div class="slidePromo"><a href="#"><img src="gambar/contohgambar.png" class="promoImage"></a></div>
@@ -30,8 +44,14 @@
   {{---------------- LOOPING LAST ACTIVITY LIST ----------------}}
 
   {{---------------- LOOPING LAST ACTIVITY LIST END ----------------}}
-  @foreach ($pro as $data)
-  <div class="slidePromo"><a href="#"><img src="{{Storage::url($data->photo)}}" class="promoImage"></a></div>
+
+  @php
+      // sort by updated_on
+      $upd = $pro->sortByDesc('updated_at');
+  @endphp
+
+  @foreach ($upd as $data)
+  <div class="slidePromo"><a href="#"><img src="{{Storage::url($data->photo)}}" style="height:300px; width:300px;" class="promoImage"></a></div>
   @endforeach
 </div>
 

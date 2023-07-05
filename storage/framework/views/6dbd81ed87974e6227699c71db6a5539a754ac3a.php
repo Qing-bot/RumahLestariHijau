@@ -77,7 +77,7 @@
             <tr>
                 <td><?php echo e($loop->index+1); ?></td>
                 <td><?php echo e($data->name); ?></td>
-                <td><img src="<?php echo e(Storage::url($data->photo)); ?>" alt="" width="100px"></td>
+                <td><img src="<?php echo e(Storage::url($data->photo)); ?>" alt="" height="80px" width="100px"></td>
                 
                 <td>
                     <a href="/editPromo/<?php echo e($data->id); ?>" class="btn btn-secondary"> Edit</a>
