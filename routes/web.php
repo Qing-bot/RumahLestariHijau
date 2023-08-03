@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\Session;
 // });
 
 Route::get('/', [ViewController::class, 'index']);
+Route::get('/resp', [ViewController::class, 'indexresp']);
 
 
 // Route::get('/homestay', function () {
@@ -61,6 +62,9 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/register', [AuthController::class, 'registration']);
 Route::post('/register', [AuthController::class, 'registerUser'])->name('register.custom');
+
+Route::get('/profile', [ViewController::class, 'profile']);
+Route::post('editProfile', [AuthController::class, 'editUser'])->name('editprofile');
 
 
 
@@ -158,4 +162,9 @@ Route::get('/destinationDetail/{id}', [ViewController::class, 'indexDestinationD
 Route::get('/contactUs', [ContactUsController::class, 'index']
 )->name('contactUs');
 
-
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return "Cleared!";
+});

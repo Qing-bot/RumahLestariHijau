@@ -7,16 +7,18 @@
 <style>
 .destinasiCheckDetail{
     font-weight: bold;
-    color:white;
-    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    color: white;
+    background: green;
+    /* background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); */
     width: 100%;
     padding: 5%;
 }
 
 .destinasiCheckDetail:hover{
     font-weight: bold;
-    color:white;
-    background: linear-gradient(to right, red, orange);
+    color: white;
+    background: green;
+    /* background: linear-gradient(to right, red, orange); */
     width: 100%;
     padding: 5%;
 }

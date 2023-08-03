@@ -67,6 +67,7 @@
         <tr>
             <th>No</th>
             <th>Name</th>
+            <th>Description</th>
             <th>Price</th>
             <th>Images</th>
             <th>Action</th>
@@ -78,6 +79,7 @@
             <tr>
                 <td>{{$loop->index+1}}</td>
                 <td>{{$data->name}}</td>
+                <td>{{$data->description}}</td>
                 <td>Rp. {{$data->price}}</td>
                 <td><img src="{{Storage::url($data->photo)}}" alt="" height="80px" width="100px"></td>
                 {{-- <td>{{$data->photo[0]->path}}</td> --}}

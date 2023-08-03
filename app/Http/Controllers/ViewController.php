@@ -12,6 +12,7 @@ use App\Models\Photo;
 use App\Models\PopularPlace;
 use App\Models\Promo;
 use App\Models\Souvenir;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,6 +25,18 @@ class ViewController extends Controller
         $promo = Promo::all();
         // dd($culinary);
         return view('home', ['cul' => $culinary, 'des' => $destination, 'pr'=>$promo]);
+    }
+
+    public function indexresp(){
+        $culinary = Culinary::all();
+        $destination = Destination::all();
+        $promo = Promo::all();
+        // dd($culinary);
+        return view('homeresp', ['cul' => $culinary, 'des' => $destination, 'pr'=>$promo]);
+    }
+
+    public function profile(){
+        return view('profile');
     }
 
     public function indexHomestay(){
