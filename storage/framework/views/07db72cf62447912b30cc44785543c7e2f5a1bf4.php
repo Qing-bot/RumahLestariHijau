@@ -64,16 +64,18 @@
                     <?php endif; ?>
 
                     <?php if(Auth::check()): ?>
-                
-                        <?php if(Auth::user()->isAdmin == true): ?>
                         <li class="nav-item dropdown" align="center">
                             <a class="nav-link font-weight-bold text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Welcome&nbsp;Admin
+                                Welcome&nbsp;<?php echo e(Auth::user()->name); ?>
+
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item font-weight-bold text-success" href="/profile" align="center">Profile</a>
-                                <a class="dropdown-item font-weight-bold text-success" href="/admin" align="center">Admin Table</a>
+                                <a class="nav-link font-weight-bold text-success" href="/profile" align="center">Profile</a>
 
+                                <?php if(Auth::user()->isAdmin == true): ?>
+                                <a class="nav-link font-weight-bold text-success" href="/admin" align="center">Admin Table</a>
+                                <?php endif; ?>
+                                
                                 <a class="nav-link font-weight-bold text-success" href="/logout" align="center">
                                     <?php echo e(__('Logout')); ?>
 
@@ -81,15 +83,6 @@
                                 </a>
                             </div>
                         </li>
-
-                        <?php else: ?>
-                            <a class="dropdown-item font-weight-bold text-success" href="/profile" align="center">Profile</a>
-                            <a class="nav-link font-weight-bold text-success" href="/logout">
-                                <?php echo e(__('Logout')); ?>
-
-                            </a>
-                        <?php endif; ?>
-
                     <?php endif; ?>
                 </ul>
             </div>

@@ -37,8 +37,9 @@
 
                     <?php if(Auth::check()): ?>
                     <li>
-                        <a class="nav-link font-weight-bold text-success" href="/logout">
-                            <?php echo e(__('Logout')); ?>
+                        <a class="nav-link font-weight-bold text-success" href="/logout" align="center">
+                                    <?php echo e(__('Logout')); ?>
+
 
                         </a>
 

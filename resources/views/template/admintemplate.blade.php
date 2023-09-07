@@ -37,8 +37,9 @@
 
                     @if(Auth::check())
                     <li>
-                        <a class="nav-link font-weight-bold text-success" href="/logout">
-                            {{ __('Logout') }}
+                        <a class="nav-link font-weight-bold text-success" href="/logout" align="center">
+                                    {{ __('Logout') }}
+
                         </a>
 
                     </li>

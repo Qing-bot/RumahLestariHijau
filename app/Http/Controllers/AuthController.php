@@ -70,9 +70,8 @@ class AuthController extends Controller
             'email' => 'required|email',
         ]);
 
-        dd($request);
-
-        $data = User::find($request->id);
+        $user = Auth::user();
+        $data = User::where(['email'=>$user->email])->first();
         $data->name = $request->name;
         $data->email = $request->email;
 

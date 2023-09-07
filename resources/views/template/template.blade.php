@@ -64,30 +64,23 @@
                     @endguest
 
                     @if(Auth::check())
-                
-                        @if(Auth::user()->isAdmin == true)
                         <li class="nav-item dropdown" align="center">
                             <a class="nav-link font-weight-bold text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Welcome&nbsp;Admin
+                                Welcome&nbsp;{{Auth::user()->name}}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item font-weight-bold text-success" href="/profile" align="center">Profile</a>
-                                <a class="dropdown-item font-weight-bold text-success" href="/admin" align="center">Admin Table</a>
+                                <a class="nav-link font-weight-bold text-success" href="/profile" align="center">Profile</a>
 
+                                @if(Auth::user()->isAdmin == true)
+                                <a class="nav-link font-weight-bold text-success" href="/admin" align="center">Admin Table</a>
+                                @endif
+                                
                                 <a class="nav-link font-weight-bold text-success" href="/logout" align="center">
                                     {{ __('Logout') }}
 
                                 </a>
                             </div>
                         </li>
-
-                        @else
-                            <a class="dropdown-item font-weight-bold text-success" href="/profile" align="center">Profile</a>
-                            <a class="nav-link font-weight-bold text-success" href="/logout">
-                                {{ __('Logout') }}
-                            </a>
-                        @endif
-
                     @endif
                 </ul>
             </div>

@@ -184,7 +184,8 @@ return [
     */
 
     'attributes' => [
-        'name' => 'nama'
+        'name' => 'nama',
+        'password2' => 'password'
     ],
 
 ];
