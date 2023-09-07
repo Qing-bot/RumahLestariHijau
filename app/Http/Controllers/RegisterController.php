@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller {
 
+    
+
     //helper function for taking first x characters without space for file name purpose
     public function getName ($string, $length) {
         return substr(str_replace(' ', '', $string), 0, $length);

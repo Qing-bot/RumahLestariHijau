@@ -20,7 +20,7 @@
     <!-- Header  -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/admin"><img src="/gambar/logo.svg" style="width:40%"></a>
+            <a class="navbar-brand" href="/admin"><img src="/gambar/logo_white.jpeg" style="height:50px; width:100%"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -37,8 +37,9 @@
 
                     <?php if(Auth::check()): ?>
                     <li>
-                        <a class="nav-link font-weight-bold text-success" href="/logout">
-                            <?php echo e(__('Logout')); ?>
+                        <a class="nav-link font-weight-bold text-success" href="/logout" align="center">
+                                    <?php echo e(__('Logout')); ?>
+
 
                         </a>
 

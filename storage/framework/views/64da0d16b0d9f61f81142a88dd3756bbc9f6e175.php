@@ -310,7 +310,6 @@
   </style>
 
 <!-- Promo Start -->
-
 <!-- Promo End -->
 
     <!-- Home 2 Start -->
@@ -422,11 +421,12 @@
             
         </div>
     </div>
+
     <!-- Visit Destination End -->
 
 
     <!-- Hero Visit Homestay and Culinary Start -->
-    <div style="text-align: center">
+    <!-- <div style="text-align: center">
                 <h1 style="font-weight: bold; color: #4CC417">OUR SERVICE PRODUCT</h1>
               </div>
         <section id="hero">
@@ -439,7 +439,7 @@
               </h4>
               
               <div class="carousel-item"> <img src="/gambar/cul.svg"> </div>
-              <!-- <?php $__currentLoopData = $des; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destination): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <?php $__currentLoopData = $des; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destination): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               
                 <div class="carousel-item">
 
@@ -458,12 +458,12 @@
               
 
               
-              <a href="/culinary"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 5%; padding-right: 5%; translate: 125% -150%">See More</button></a>
+              <!-- <a href="/culinary"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 5%; padding-right: 5%; translate: 125% -150%">See More</button></a>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <div id="descarousel">
+    <!-- <div id="descarousel">
       <?php $__currentLoopData = $cul; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $culinary): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="slidePromo"><a href="#"><img src="<?php echo e(Storage::url($culinary->photo)); ?>" style="height:100px; width:100px;"></a></div>          
       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -534,12 +534,12 @@
         });
       </script>
 
-    
+     -->
 
 
   <!-- Visit Homestay and Culinary End -->
 
-    <!-- <div style="text-align: center">
+    <div style="text-align: center">
         <h1 style="font-weight: bold; color: #4CC417">OUR SERVICE PRODUCT</h1>
     </div>
 
@@ -552,9 +552,9 @@
                 
                 <div id="carousel2" style="margin-top: 10%; margin-bottom: 6%">
                 
-                  <?php $__currentLoopData = $des; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destination): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="slidePromo"><a href="#"><img src="<?php echo e(Storage::url($destination->photo)); ?>" style="height:100px; width:100px;" class="homeImage"></a></div>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  
+                    <div class="slidePromo"><a href="#"><img src="<?php echo e(Storage::url($destination->photo)); ?>" style="height:200px; width:200px;" class="homeImage"></a></div>
+                  
                 </div>
                 
                 <a href="/homestay"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 7%; padding-right: 7%; translate: 125% -150%">See More</button></a>
@@ -572,9 +572,9 @@
             <div style="text-align:center; width: 50vh;">
                 
                 <div id="carousel2" style="margin-top: 10%; margin-bottom: 6%">
-                  <?php $__currentLoopData = $cul; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $culinary): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="slidePromo"><img src="<?php echo e(Storage::url($culinary->photo)); ?>" style="height:100px; width:100px;" class="promoImage"></div>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  
+                    <div class="slidePromo"><img src="<?php echo e(Storage::url($culinary->photo)); ?>" style="height:200px; width:200px;" class="promoImage"></div>
+                  
                 </div>
                 <a href="/culinary"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 8%; padding-right: 8%; translate: 125% -150%">See More</button></a>
             </div>
@@ -582,7 +582,7 @@
                 Menjelajahi makanan-makanan yang enak!
             </p> 
         </div>
-    </div> -->
+    </div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('template.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Downloads\Binus\RumahLestariHijau\resources\views/home.blade.php ENDPATH**/ ?>

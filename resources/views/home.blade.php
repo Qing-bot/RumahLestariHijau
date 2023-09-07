@@ -421,11 +421,12 @@
             {{-- Style= "Translate: X Y" --}}
         </div>
     </div>
+
     <!-- Visit Destination End -->
 
 
     <!-- Hero Visit Homestay and Culinary Start -->
-    <div style="text-align: center">
+    <!-- <div style="text-align: center">
                 <h1 style="font-weight: bold; color: #4CC417">OUR SERVICE PRODUCT</h1>
               </div>
         <section id="hero">
@@ -438,7 +439,7 @@
               </h4>
               
               <div class="carousel-item"> <img src="/gambar/cul.svg"> </div>
-              <!-- @foreach ($des as $destination)
+              @foreach ($des as $destination)
               
                 <div class="carousel-item">
 
@@ -457,12 +458,12 @@
               
 
               
-              <a href="/culinary"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 5%; padding-right: 5%; translate: 125% -150%">See More</button></a>
+              <!-- <a href="/culinary"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 5%; padding-right: 5%; translate: 125% -150%">See More</button></a>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <div id="descarousel">
+    <!-- <div id="descarousel">
       @foreach ($cul as $culinary)
         <div class="slidePromo"><a href="#"><img src="{{Storage::url($culinary->photo)}}" style="height:100px; width:100px;"></a></div>          
       @endforeach
@@ -533,12 +534,12 @@
         });
       </script>
 
-    {{-- Carousel2 End --}}
+    {{-- Carousel2 End --}} -->
 
 
   <!-- Visit Homestay and Culinary End -->
 
-    <!-- <div style="text-align: center">
+    <div style="text-align: center">
         <h1 style="font-weight: bold; color: #4CC417">OUR SERVICE PRODUCT</h1>
     </div>
 
@@ -551,9 +552,9 @@
                 {{-- <img src="{{Storage::url($des->photo)}}"  style="height:300px; width: 395px;"> --}}
                 <div id="carousel2" style="margin-top: 10%; margin-bottom: 6%">
                 
-                  @foreach ($des as $destination)
-                    <div class="slidePromo"><a href="#"><img src="{{Storage::url($destination->photo)}}" style="height:100px; width:100px;" class="homeImage"></a></div>
-                  @endforeach
+                  
+                    <div class="slidePromo"><a href="#"><img src="{{Storage::url($destination->photo)}}" style="height:200px; width:200px;" class="homeImage"></a></div>
+                  
                 </div>
                 
                 <a href="/homestay"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 7%; padding-right: 7%; translate: 125% -150%">See More</button></a>
@@ -571,9 +572,9 @@
             <div style="text-align:center; width: 50vh;">
                 {{-- <img src="{{Storage::url($cul->photo)}}" style="height:300px; width:410px"> --}}
                 <div id="carousel2" style="margin-top: 10%; margin-bottom: 6%">
-                  @foreach ($cul as $culinary)
-                    <div class="slidePromo"><img src="{{Storage::url($culinary->photo)}}" style="height:100px; width:100px;" class="promoImage"></div>
-                  @endforeach
+                  
+                    <div class="slidePromo"><img src="{{Storage::url($culinary->photo)}}" style="height:200px; width:200px;" class="promoImage"></div>
+                  
                 </div>
                 <a href="/culinary"><button style="border-radius: 20px; background: linear-gradient(to right, orange, red); color: white; padding: 2%; padding-left: 8%; padding-right: 8%; translate: 125% -150%">See More</button></a>
             </div>
@@ -581,5 +582,5 @@
                 Menjelajahi makanan-makanan yang enak!
             </p> 
         </div>
-    </div> -->
+    </div>
 @endsection

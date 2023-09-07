@@ -67,6 +67,7 @@
         <tr>
             <th>No</th>
             <th>Name</th>
+            <th>Description</th>
             <th>Price</th>
             <th>Images</th>
             <th>Action</th>
@@ -78,6 +79,7 @@
             <tr>
                 <td><?php echo e($loop->index+1); ?></td>
                 <td><?php echo e($data->name); ?></td>
+                <td><?php echo e($data->description); ?></td>
                 <td>Rp. <?php echo e($data->price); ?></td>
                 <td><img src="<?php echo e(Storage::url($data->photo)); ?>" alt="" height="80px" width="100px"></td>
                 

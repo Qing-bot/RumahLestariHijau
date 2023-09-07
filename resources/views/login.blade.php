@@ -1,3 +1,7 @@
+@extends('template.logintemplate')
+
+@section('title', 'Homestay - Rumah Hijau')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,20 +38,27 @@
             position: absolute;
             transform: translate(-50%, -50%);
             left: 50%;
-            top: 50%;
+            top: 55%;
             width: 457px;
-            height: 506px;
             text-align: center; box-shadow: 5px 12px 12px gray">
-        <img src="gambar/logo.svg" style="width: 100%">
+        <img src="gambar/logo_white.jpeg" style="height:350px; width: 100%">
         <form method="POST" action="/login">
             @csrf
 
-            <input type="email" id="email" name="email" placeholder="Enter your name"
+            <input type="email" id="email" name="email" placeholder="Enter your email"
                 style="width: 90%; height: 40px; margin: 3%">
-            <div style="text-align: right; padding-right: 4%; font-size: 75%; font-weight: bold"><a href="#"
+            @error('email')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
+            <div style="text-align: right; padding-right: 4%; font-size: 75%; font-weight: bold"><a href="/forgot"
                     style="text-decoration: none">Forgot Password?</a></div>
             <input type="password" id="password" placeholder="Enter your password" name="password"
                 style="width: 90%; height: 40px; margin-bottom: 10%">
+            @error('password')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            
             <button type="submit"
                 style="padding: 3%; padding-right: 10%; padding-left: 10%; border: none; background-color: rgb(37, 209, 37); color: white; border-radius: 5px; box-shadow: 2px 4px 6px black">
                 Login</button>

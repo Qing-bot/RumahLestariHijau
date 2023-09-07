@@ -13,10 +13,10 @@ class AuthController extends Controller
 
     public function login(Request $request){
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
-
+        
 
         $credential = $request->only('email', 'password');
         $user = User::where(['email'=>$request->email])->first();
@@ -29,8 +29,10 @@ class AuthController extends Controller
             else return redirect ('/');
         }
         return redirect()->back()->withErrors([
-            'email' => "Wrong Email or Password"
+            'email' => "Email not registered",
+            'password' => "Wrong Password"
         ]);
+        
     }
 
     public function registration(Request $request){
@@ -60,7 +62,22 @@ class AuthController extends Controller
         'password' => Hash::make($data['password']),
         'isAdmin' => '0',
       ]);
-    }   
+    }  
+
+    public function editUser(Request $request) {
+        $validateData = $request->validate([
+            'name' => 'required|regex:/^[a-z A-Z]+$/u',
+            'email' => 'required|email',
+        ]);
+
+        $user = Auth::user();
+        $data = User::where(['email'=>$user->email])->first();
+        $data->name = $request->name;
+        $data->email = $request->email;
+
+        $data->save();
+        return redirect('/profile');
+    }
 
     public function logout(Request $request) 
     {
